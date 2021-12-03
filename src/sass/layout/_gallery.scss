@@ -29,14 +29,3 @@
     flex-basis: calc((100% - 3 * 30px) / 3);
   }
 }
-.gallery-img {
-  border: 1px solid black;
-  height: 440px;
-  width: 280px;
-  @media screen and (min-width: 768px) {
-    width: 294px;
-  }
-  @media screen and (min-width: 1024px) {
-    width: 274px;
-  }
-}
