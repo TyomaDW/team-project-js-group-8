@@ -1,0 +1,31 @@
+.flex-wrapper {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: baseline;
+
+  padding: 45px 20px;
+}
+.logo {
+}
+.nav__list {
+  display: flex;
+  flex-flow: row nowrap;
+  background-color: aqua;
+}
+.nav__link {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  &:not(:first-child) {
+    margin-left: 40px;
+  }
+}
+.nav-link .nav__item {
+}
+.logo__icon {
+  width: 24px;
+  height: 24px;
+}
+.app-name {
+  display: none;
+}
