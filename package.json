@@ -26,6 +26,5 @@
     "sass": "^1.32.8"
   },
   "dependencies": {
-    "modaal": "^0.4.4"
   }
 }
