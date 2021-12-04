@@ -12,7 +12,6 @@
 
 .modal_wrapper {
   position: relative;
-  padding: 20px;
   background-color: white;
   top: 50%;
   left: 50%;
@@ -38,6 +37,10 @@
 .modal_content {
   display: flex;
   word-wrap: break-word;
+  padding-top: 50px;
+  padding-bottom: 40px;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 .close-btn {
@@ -85,7 +88,7 @@
 }
 .content {
   width: 395px;
-  height: 415px;
+  height: 420px;
   outline: 1px solid red;
 }
 
@@ -134,10 +137,24 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
+  margin-bottom: 10px;
 }
 
 .descreption {
   font-weight: 500;
   font-size: 12px;
   line-height: 1.67;
+}
+
+.modal_card_btn {
+  width: 136px;
+  height: 44px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  margin-top: 20px;
+}
+
+.modal_card_btn:not(:last-child) {
+  margin-right: 15px;
 }
