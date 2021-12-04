@@ -1,21 +1,24 @@
 .modal {
   display: none;
-  position: absolute;
-  overflow: auto;
+  position: fixed;
+  padding-top: 50px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
   background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.5);
+}
 
+.modal_wrapper {
+  position: relative;
+  padding: 20px;
+  background-color: white;
   top: 50%;
   left: 50%;
+  transform: translate(-50%, -50%);
   width: 618px;
   height: 562px;
-  background-color: rgb(192, 192, 236);
-
-  box-shadow: var(--box-shadow);
-  outline: 1px solid red;
-
-  transform: translate(-50%, -50%);
-  padding: 40px;
 
   @media screen and (min-width: 1024px) {
     width: 882px;
@@ -26,19 +29,18 @@
     width: 285px;
     height: 800px;
   }
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s;
 }
 
-.modal-content {
+.modal_content {
   display: flex;
-  position: relative;
-  background-color: transparent;
-  outline: 1px solid red;
-  /* margin: auto; */
-  padding: 0;
   word-wrap: break-word;
 }
 
-.close {
+.close-btn {
   position: absolute;
   top: 18px;
   right: 18px;
@@ -47,9 +49,7 @@
   cursor: pointer;
   padding: 0;
 }
-
-.close:hover,
-.close:focus {
+.close-btn:hover .close-btn:focus {
   color: #000;
   text-decoration: none;
   cursor: pointer;
@@ -98,6 +98,46 @@
   margin-bottom: 20px;
 }
 
-.title-ident {
+.film_title {
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 1.16;
+  color: #000000;
+  text-transform: uppercase;
   margin-bottom: 20px;
+}
+
+.contents {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  color: #8c8c8c;
+}
+
+.contents:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.contents_value {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.17;
+  color: #000000;
+}
+
+.contents_value:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.descreption_title {
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+}
+
+.descreption {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.67;
 }
