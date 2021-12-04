@@ -1,1 +1,3 @@
-import './sass/main.scss';
+import modalHandler from './card_modal'
+
+modalHandler.init();
