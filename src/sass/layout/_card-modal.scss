@@ -2,12 +2,12 @@
   --modal-bg-color: #ffffff;
   --text-color: #000000;
   --active-color: #ff6b01;
+  --modal-font-weight: 500;
 }
 
 .modal {
   display: none;
   position: fixed;
-  padding-top: 50px;
   left: 0;
   top: 0;
   width: 100%;
@@ -23,33 +23,20 @@
   transform: translate(-50%, -50%);
   width: 618px;
   height: 562px;
-  padding-top: 42px;
-  padding-bottom: 40px;
-  padding-left: 28px;
-  padding-right: 28px;
+  padding: 42px 28px 40px 28px;
 
   @media screen and (min-width: 1024px) {
     width: 882px;
     height: 568px;
-    padding-top: 50px;
-    padding-bottom: 40px;
-    padding-left: 30px;
-    padding-right: 30px;
+    padding: 50px 30px 40px 30px;
   }
 
   @media screen and (max-width: 767px) {
     width: 280px;
     height: 100%;
-    padding-top: 48px;
-    padding-bottom: 40px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 48px 20px 40px 20px;
     overflow-y: auto;
   }
-  -webkit-animation-name: animatetop;
-  -webkit-animation-duration: 0.4s;
-  animation-name: animatetop;
-  animation-duration: 0.4s;
 }
 
 .modal_content {
@@ -133,7 +120,7 @@
 }
 
 .film_title {
-  font-weight: 500;
+  font-weight: var(--modal-font-weight);
   font-size: 20px;
   line-height: 1.15;
   color: var(--text-color);
@@ -154,7 +141,7 @@
 }
 
 .title_list_value {
-  font-weight: 500;
+  font-weight: var(--modal-font-weight);
   font-size: 12px;
   line-height: 1.33;
   color: #8c8c8c;
@@ -165,7 +152,7 @@
 }
 
 .contents_value {
-  font-weight: 500;
+  font-weight: var(--modal-font-weight);
   font-size: 12px;
   line-height: 1.17;
   color: var(--text-color);
@@ -177,14 +164,14 @@
 
 .descreption_title {
   text-transform: uppercase;
-  font-weight: 500;
+  font-weight: var(--modal-font-weight);
   font-size: 12px;
   line-height: 1.33;
   margin-bottom: 10px;
 }
 
 .descreption {
-  font-weight: 500;
+  font-weight: var(--modal-font-weight);
   font-size: 12px;
   line-height: 1.67;
 }
@@ -192,13 +179,14 @@
 .modal_card_btn {
   width: 112px;
   height: 44px;
-  font-weight: 500;
+  font-weight: var(--modal-font-weight);
   font-size: 12px;
   line-height: 1.33;
   margin-top: 20px;
   border-radius: 5px;
   cursor: pointer;
   border: none;
+  padding: 0;
   outline: 1px solid var(--text-color);
   background-color: var(--modal-bg-color);
 
