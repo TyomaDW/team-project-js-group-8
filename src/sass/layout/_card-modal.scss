@@ -18,15 +18,27 @@
   transform: translate(-50%, -50%);
   width: 618px;
   height: 562px;
+  padding-top: 42px;
+  padding-bottom: 40px;
+  padding-left: 28px;
+  padding-right: 28px;
 
   @media screen and (min-width: 1024px) {
     width: 882px;
     height: 568px;
+    padding-top: 50px;
+    padding-bottom: 40px;
+    padding-left: 30px;
+    padding-right: 30px;
   }
 
   @media screen and (max-width: 767px) {
     width: 285px;
     height: 800px;
+    padding-top: 48px;
+    padding-bottom: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
   -webkit-animation-name: animatetop;
   -webkit-animation-duration: 0.4s;
@@ -37,10 +49,6 @@
 .modal_content {
   display: flex;
   word-wrap: break-word;
-  padding-top: 50px;
-  padding-bottom: 40px;
-  padding-left: 30px;
-  padding-right: 30px;
 }
 
 .close-btn {
@@ -85,10 +93,14 @@
   outline: 1px solid red;
   margin-right: 30px;
 }
+
 .content {
   width: 395px;
-  height: 420px;
   outline: 1px solid red;
+
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    width: 267px;
+  }
 }
 
 .title-position {
@@ -98,6 +110,10 @@
 .position {
   margin-right: 85px;
   margin-bottom: 20px;
+
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    margin-right: 40px;
+  }
 }
 
 .film_title {
@@ -107,6 +123,13 @@
   color: #000000;
   text-transform: uppercase;
   margin-bottom: 20px;
+
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    font-size: 20px;
+    line-height: 1.15;
+    color: #000000;
+    text-transform: uppercase;
+  }
 }
 
 .contents {
@@ -157,10 +180,18 @@
   border: none;
   outline: 1px solid #000000;
   background-color: #ffffff;
+
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    width: 124px;
+  }
 }
 
 .modal_card_btn:not(:last-child) {
   margin-right: 15px;
+
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    margin-right: 14px;
+  }
 }
 
 .is-active {

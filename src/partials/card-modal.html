@@ -8,7 +8,15 @@
            </button>
         <div class="modal_content">
              <div class="img">
-               <img src="./images/card_modal/photo_1024.jpg" alt="movie's poster">
+                <picture>
+                    <source media="(min-width: 1024px)"
+                        srcset="./images/card_modal/photo_1024.jpg 1x">
+                    <source media="(min-width: 768px)"
+                        srcset="./images/card_modal/photo_768.jpg 1x"> 
+                    <source media="(min-width: 320px)"
+                        srcset="./images/card_modal/photo_320.jpg 1x">
+                    <img src="./images/card_modal/photo_1024.jpg" alt="movie's poster">
+                </picture>
              </div>
              <div class="content">
                 <h2 class="film_title">A FISTFUL OF LEAD</h2>
