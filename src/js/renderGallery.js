@@ -3,14 +3,13 @@ export const refs = {
 };
 export function renderGallery(movies) {
   const markup = movies
-    .map(movie => {
-      return `<li>
-        <p>${movie.title}</p>
-        <p>${movie.genre_ids}</p>
-        <p>${movie.release_date}</p>
+    .map(({ genre_ids, title, release_date }) => {
+      return `<li class="gallery__item">
+        <p>${title}</p>
+        <p>${genre_ids}</p>
+        <p>${release_date}</p>
         </li>`;
     })
     .join('');
-  console.log(markup);
   refs.gallery.insertAdjacentHTML('beforeend', markup);
 }
