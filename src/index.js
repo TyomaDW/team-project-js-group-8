@@ -6,10 +6,9 @@ modalHandler.init();
 
 
 
+import './footer_modal';
 
 
 
 
 
-
-import './footer_modal'
