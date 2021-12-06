@@ -25,7 +25,7 @@ export function renderGallery(movies, genres) {
   refs.gallery.insertAdjacentHTML('beforeend', markup);
 }
 
-export async function foo() {
+export async function renderMainSection() {
   const movies = await request.fetchTrendingMovies();
   const genres = await request.fetchGenres();
   const genreIds = movies.map(movie => {
@@ -35,4 +35,4 @@ export async function foo() {
   console.log(genres);
   renderGallery(movies, genres);
 }
-foo();
+renderMainSection();
