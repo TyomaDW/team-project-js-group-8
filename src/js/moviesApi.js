@@ -6,8 +6,17 @@ export const request = {
   async fetchTrendingMovies() {
     try {
       const response = await axios.get(`3/trending/movie/week?api_key=${KEY}`);
-      const movies = await response.data.results;
+      const movies = response.data.results;
       return movies;
+    } catch (error) {
+      console.log(error.message);
+    }
+  },
+  async fetchGenres() {
+    try {
+      const response = await axios.get(`3/genre/movie/list?api_key=${KEY}&language=en-US`);
+      const genres = response;
+      return genres.data.genres;
     } catch (error) {
       console.log(error.message);
     }
