@@ -12,12 +12,12 @@ const modalHandler = {
    currentMovieId: null,
    init: function () {
       modalBtn.onclick = () => {
-         //Показать лоадер
+         
          this.currentMovieId = modalBtn.dataset.id;
          Loading.pulse();
-         // загр инф о фильме
+         
          request.fetchMovieForModal(this.currentMovieId).then((response) => {
-            // отрисовать
+            
             Loading.remove();
             const modalContent = document.querySelector('.modal_content');
          
@@ -28,13 +28,10 @@ const modalHandler = {
             modalContent.querySelector('.vote_count').innerHTML = response.vote_count;
             modalContent.querySelector('.genres').innerHTML = response.genres[0].name;
             modalContent.querySelector('.description').innerHTML = response.overview;
-
             modalContent.querySelector('.poster picture .large').srcset = `https://image.tmdb.org/t/p/w400${response.poster_path} 1x`;
             modalContent.querySelector('.poster picture .medium').srcset = `https://image.tmdb.org/t/p/w300${response.poster_path} 1x`;
             modalContent.querySelector('.poster picture .small').srcset = `https://image.tmdb.org/t/p/w300${response.poster_path} 1x`;
-            // скрыть лоадер popularity vote_count
             
-            //показать окно
             modal.style.display = "block"
          });
       }

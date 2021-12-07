@@ -1,10 +1,9 @@
 import modalHandler from './card_modal';
 import { request } from './js/moviesApi';
 import { refs, renderGallery } from './js/renderGallery';
-modalHandler.init();
-/* modalHandler.initToWached(); */
 
-/* modalHandler.addToWached(); */
+modalHandler.init();
+
 request.fetchTrendingMovies();
 
 
