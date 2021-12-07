@@ -12,4 +12,14 @@ export const request = {
       console.log(error.message);
     }
   },
+
+  async fetchMovieForModal(movieId) {
+    try {
+      const response = await axios.get(`3/movie/${movieId}?api_key=${KEY}`);
+      const movies = await response.data;
+      return movies;
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
 };

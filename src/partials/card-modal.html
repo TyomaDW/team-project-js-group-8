@@ -1,4 +1,4 @@
-<button id="modal-btn"> click me</button>
+<button id="modal-btn" data-id="438631"> click me</button>
 <div class="modal">
     <div class="modal_wrapper">
            <button type="button" class="close-btn">
@@ -10,40 +10,28 @@
              <div class="poster">
                 <picture>
                     <source media="(min-width: 1024px)"
-                        srcset="./images/card-modal/photo_1024.jpg 1x">
+                        srcset="./images/card-modal/photo_1024.jpg 1x" class="large">
                     <source media="(min-width: 768px)"
-                        srcset="./images/card-modal/photo_768.jpg 1x"> 
+                        srcset="./images/card-modal/photo_768.jpg 1x" class="medium"> 
                     <source media="(min-width: 320px)"
-                        srcset="./images/card-modal/photo_320.jpg 1x">
+                        srcset="./images/card-modal/photo_320.jpg 1x" class="small">
                     <img src="./images/card-modal/photo_1024.jpg" alt="movie's poster">
                 </picture>
              </div>
              <div class="content">
-                <h2 class="film_title">A FISTFUL OF LEAD</h2>
+                <h2 class="film_title"></h2>
                     <div class="title-position">
-                        <ul class="title_list_position">
-                          <li class="title_list_value">Vote / Votes</li>
-                          <li class="title_list_value">Popularity</li>
-                          <li class="title_list_value">Original Title</li>
-                          <li class="title_list_value">Genre</li>
-                        </ul>                       
-                        <ul>
-                           <li class="contents_value"><span class="highlight">7.3</span> / <span class="highlight_all">100</span></li>
-                           <li class="contents_value">100</li>
-                           <li class="contents_value">A FISTFUL OF LEAD</li>
-                           <li class="contents_value">Western</li>
-                        </ul>                   
+                       <ul class="title_list_position">
+                            <li class="title_item"><span class="title_list_value a">Vote / Votes</span><span class="contents_value"><span class="highlight vote_average"></span> / <span class="highlight_all vote_count"></span></span></li>
+                            <li class="title_item"><span class="title_list_value b">Popularity</span><span class="contents_value popularity"></span></li>
+                            <li class="title_item"><span class="title_list_value c">Original Title</span><span class="contents_value original_title"></span></li>
+                            <li class="title_item"><span class="title_list_value d">Genre</span><span class="contents_value genres"></span></li>
+                       </ul>                  
                     </div>
-                      <h3 class="descreption_title">About</h3>
-                      <p class="descreption">
-                         Four of the West’s most infamous outlaws assemble to steal a huge stash of gold from the most corrupt settlement
-                         of the gold rush towns. But not all goes to plan one is killed and the other three escapes with bags of gold hide out
-                         in the abandoned gold mine where they happen across another gang of three – who themselves were planning to hit the
-                         very same bank! As tensions rise, things go from bad to worse as they realise the bags of gold are filled with lead...
-                         they’ve been double crossed – but by who and how?
-                      </p>
-                    <button class="modal_card_btn is-active">ADD TO WACHED</button>
-                    <button class="modal_card_btn">ADD TO QUEUE</button>
+                      <h3 class="description_title">About</h3>
+                      <p class="description"></p>
+                    <button class="modal_card_btn is-active wached">ADD TO WACHED</button>
+                    <button class="modal_card_btn queue">ADD TO QUEUE</button>
              </div>
         </div>
     </div>

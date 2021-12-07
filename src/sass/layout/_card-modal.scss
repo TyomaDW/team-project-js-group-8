@@ -8,6 +8,7 @@
 .modal {
   display: none;
   position: fixed;
+  z-index: 1;
   left: 0;
   top: 0;
   width: 100%;
@@ -22,12 +23,12 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 618px;
-  height: 562px;
+  min-height: 562px;
   padding: 42px 28px 40px 28px;
 
   @media screen and (min-width: 1024px) {
     width: 882px;
-    height: 568px;
+    min-height: 568px;
     padding: 50px 30px 40px 30px;
   }
 
@@ -102,23 +103,6 @@
   }
 }
 
-.title-position {
-  display: flex;
-}
-
-.title_list_position {
-  margin-right: 39px;
-  margin-bottom: 20px;
-
-  @media screen and (min-width: 768px) and (max-width: 1024px) {
-    margin-right: 40px;
-  }
-
-  @media screen and (min-width: 1024px) {
-    margin-right: 85px;
-  }
-}
-
 .film_title {
   font-weight: var(--modal-font-weight);
   font-size: 20px;
@@ -147,7 +131,7 @@
   color: #8c8c8c;
 }
 
-.title_list_value:not(:last-child) {
+.title_item:not(:last-child) {
   margin-bottom: 10px;
 }
 
@@ -158,19 +142,16 @@
   color: var(--text-color);
 }
 
-.contents_value:not(:last-child) {
-  margin-bottom: 12px;
-}
-
-.descreption_title {
+.description_title {
   text-transform: uppercase;
   font-weight: var(--modal-font-weight);
   font-size: 12px;
   line-height: 1.33;
+  margin-top: 20px;
   margin-bottom: 10px;
 }
 
-.descreption {
+.description {
   font-weight: var(--modal-font-weight);
   font-size: 12px;
   line-height: 1.67;
@@ -189,9 +170,10 @@
   padding: 0;
   outline: 1px solid var(--text-color);
   background-color: var(--modal-bg-color);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   @media screen and (min-width: 768px) and (max-width: 1024px) {
-    width: 124px;
+    width: 116px;
   }
 
   @media screen and (min-width: 1024px) {
@@ -199,22 +181,23 @@
   }
 }
 
+.modal_card_btn:hover,
+.modal_card_btn:focus {
+  color: var(--modal-bg-color);
+  background-color: var(--active-color);
+  outline: none;
+}
+
 .modal_card_btn:not(:last-child) {
   margin-right: 15px;
 
   @media screen and (min-width: 768px) and (max-width: 1024px) {
-    margin-right: 14px;
+    margin-right: 12px;
   }
 
   @media screen and (max-width: 767px) {
     margin-right: 11px;
   }
-}
-
-.is-active {
-  color: var(--modal-bg-color);
-  background-color: var(--active-color);
-  outline: none;
 }
 
 ul {
@@ -233,4 +216,20 @@ ul {
   background-color: #f7f7f7;
   border-radius: 5px;
   padding: 1px 7px;
+}
+
+.a {
+  margin: 0 85px 0 0;
+}
+
+.b {
+  margin: 0 97px 0 0;
+}
+
+.c {
+  margin: 0 80px 0 0;
+}
+
+.d {
+  margin: 0 120px 0 0;
 }
