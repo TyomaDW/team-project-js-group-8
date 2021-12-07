@@ -5,20 +5,21 @@ export const refs = {
 };
 export function renderGallery(movies, genres) {
   const markup = movies
-    .map(({ genre_ids, title, release_date }) => {
+    .map(({ genre_ids, title, release_date, poster_path }) => {
       let matchedId = [];
-      console.log(genre_ids);
       genres.forEach(genre => {
         if (genre_ids.includes(genre.id)) {
           matchedId.push(genre.name);
-          console.log(matchedId);
         }
       });
-
       return `<li class="gallery__item">
-        <p>${title}</p>
-        <p class="genre">${matchedId}</p>
-        <p>${release_date}</p>
+      <div>
+        <a href="#" class="gallery__item-link">
+        <img class="film-image" src="https://image.tmdb.org/t/p/w780/${poster_path}" alt="film-image">
+        <p class="film-heading">${title}</p>
+        <p class="film-info"><span class="film-genre">${matchedId}</span> | <span class="film-year">${release_date}</span></p>
+        </a>
+      </div>  
         </li>`;
     })
     .join('');
@@ -26,13 +27,15 @@ export function renderGallery(movies, genres) {
 }
 
 export async function renderMainSection() {
-  const movies = await request.fetchTrendingMovies();
-  const genres = await request.fetchGenres();
-  const genreIds = movies.map(movie => {
-    return movie.genre_ids;
-  });
-  console.log(genreIds);
-  console.log(genres);
-  renderGallery(movies, genres);
+  try {
+    const movies = await request.fetchTrendingMovies();
+    const genres = await request.fetchGenres();
+    const genreIds = movies.map(movie => {
+      return movie.genre_ids;
+    });
+    renderGallery(movies, genres);
+  } catch (error) {
+    console.log(error.message);
+  }
 }
 renderMainSection();
