@@ -16,7 +16,6 @@ export const request = {
   async fetchMovieForModal(movieId) {
     try {
       const response = await axios.get(`3/movie/${movieId}?api_key=${KEY}`);
-      console.log(response.data)
       const movies = await response.data;
       return movies;
     } catch (error) {
