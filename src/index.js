@@ -4,6 +4,9 @@ import { refs, renderGallery } from './js/renderGallery';
 
 modalHandler.init();
 
-request.fetchTrendingMovies();
+import './footer_modal';
 
+request.fetchTrendingMovies().then(data => {
+  renderGallery(data);
+});
 
