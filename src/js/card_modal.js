@@ -1,5 +1,5 @@
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
-import { request } from './js/moviesApi';
+import { request } from './moviesApi';
 
 const gallaryContainer = document.querySelector(".gallery__list")
 
@@ -12,7 +12,11 @@ const queue = document.querySelector('.queue')
 const modalHandler = {
    currentMovieId: null,
    closeOnEscape: null,
+
    init: function () {
+      if (!gallaryContainer) {
+         return;
+      }
       this.initModal();
       this.initToWached();
       this.initToQueue();
@@ -37,11 +41,13 @@ const modalHandler = {
          event.preventDefault();
          
          this.currentMovieId = movieLink.dataset.id;
+
          Loading.pulse();
          
          request.fetchMovieForModal(this.currentMovieId).then((response) => {
             
             Loading.remove();
+
             const modalContent = document.querySelector('.modal_content');
          
             modalContent.querySelector('.film_title').innerHTML = response.title;
@@ -115,6 +121,9 @@ const modalHandler = {
    }  
 }
 
+modalHandler.init();
+
 export default modalHandler;
+
 
 
