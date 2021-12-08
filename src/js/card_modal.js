@@ -32,7 +32,7 @@ const modalHandler = {
       }
       
       gallaryContainer.onclick = (event) => {
-         const movieLink = event.target.closest(".gallery__item-link");
+         const movieLink = event.target.closest(".card__link");
          
          if (!movieLink) {
             return;
