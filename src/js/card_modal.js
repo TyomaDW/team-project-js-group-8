@@ -1,7 +1,8 @@
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
-import { request } from './js/moviesApi';
+import { request } from './moviesApi';
 
-const modalBtn = document.getElementById("modal-btn")
+const gallaryContainer = document.querySelector(".gallery__list")
+
 const modal = document.querySelector(".modal")
 const closeBtn = document.querySelector(".close-btn")
 const wached = document.querySelector('.wached')
@@ -10,15 +11,45 @@ const queue = document.querySelector('.queue')
 
 const modalHandler = {
    currentMovieId: null,
+   closeOnEscape: null,
+
    init: function () {
-      modalBtn.onclick = () => {
+      if (!gallaryContainer) {
+         return;
+      }
+      this.initModal();
+      this.initToWached();
+      this.initToQueue();
+   },
+
+   initModal: function () {
+
+      this.closeOnEscape = (e) => {
+         if (e.key === 'Escape') {
+            modal.style.display = "none"
+            document.removeEventListener('keydown', this.closeOnEscape);
+         }
+      }
+      
+      gallaryContainer.onclick = (event) => {
+         const movieLink = event.target.closest(".gallery__item-link");
          
-         this.currentMovieId = modalBtn.dataset.id;
-         Loading.pulse();
+         if (!movieLink) {
+            return;
+         }
+
+         event.preventDefault();
+         
+         this.currentMovieId = movieLink.dataset.id;
+
+         Loading.dots({            
+            svgColor: '#ff6b01',
+         });
          
          request.fetchMovieForModal(this.currentMovieId).then((response) => {
             
             Loading.remove();
+
             const modalContent = document.querySelector('.modal_content');
          
             modalContent.querySelector('.film_title').innerHTML = response.title;
@@ -33,18 +64,22 @@ const modalHandler = {
             modalContent.querySelector('.poster picture .small').srcset = `https://image.tmdb.org/t/p/w300${response.poster_path} 1x`;
             
             modal.style.display = "block"
+
+            document.addEventListener('keydown', this.closeOnEscape);
          });
       }
+
       closeBtn.onclick = function () {
          modal.style.display = "none"
+         document.removeEventListener('keydown', this.closeOnEscape);
       }
+
       window.onclick = function (e) {
          if (e.target == modal) {
             modal.style.display = "none"
-         }
+            document.removeEventListener('keydown', this.closeOnEscape);
+         }  
       }
-      this.initToWached();
-      this.initToQueue();
    },
 
    initToWached: function () {
@@ -88,6 +123,9 @@ const modalHandler = {
    }  
 }
 
+modalHandler.init();
+
 export default modalHandler;
+
 
 
