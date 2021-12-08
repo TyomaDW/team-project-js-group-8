@@ -4,8 +4,9 @@ export const refs = {
   gallery: document.querySelector('.gallery__list'),
 };
 export function renderGallery(movies, genres) {
+  
   const markup = movies
-    .map(({ genre_ids, title, release_date, poster_path }) => {
+    .map(({ id, genre_ids, title, release_date, poster_path }) => {
       let matchedId = [];
       genres.forEach(genre => {
         if (genre_ids.includes(genre.id)) {
@@ -14,7 +15,7 @@ export function renderGallery(movies, genres) {
       });
       return `<li class="gallery__item">
       <div>
-        <a href="#" class="gallery__item-link">
+        <a href="#" class="gallery__item-link" data-id="${id}">
         <img class="film-image" src="https://image.tmdb.org/t/p/w780/${poster_path}" alt="film-image">
         <p class="film-heading">${title}</p>
         <p class="film-info"><span class="film-genre">${matchedId}</span> | <span class="film-year">${release_date}</span></p>
