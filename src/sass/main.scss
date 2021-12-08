@@ -1,15 +1,15 @@
+@import './utils/variables';
+@import './utils/visually-hidden';
 @import './base/common';
 @import './base/container';
-@import './base/visually-hidden';
-@import './utils/variables';
 
-@import './layout/spinner';
+@import './components/card';
+@import './components/spinner';
+
 @import './layout/header';
 @import './layout/hero';
-@import './layout/slider';
 @import './layout/gallery';
-@import './layout/gallery-item';
-@import './layout/card-modal';
-
 @import './layout/footer';
-@import './layout/modal_footer';
+
+@import './components/card-modal';
+@import './components/modal_footer';
