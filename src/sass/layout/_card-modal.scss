@@ -26,16 +26,17 @@
   min-height: 562px;
   padding: 42px 28px 40px 28px;
 
- @media screen and (max-width: 767px) {
-    width: 280px;
-    height: 100%;
-    padding: 48px 20px 40px 20px;
-    overflow-y: auto;
-  }
   @media screen and (min-width: 1024px) {
     width: 882px;
     min-height: 568px;
     padding: 50px 30px 40px 30px;
+  }
+
+  @media screen and (max-width: 767px) {
+    width: 280px;
+    height: 100%;
+    padding: 48px 20px 40px 20px;
+    overflow-y: auto;
   }
 }
 
