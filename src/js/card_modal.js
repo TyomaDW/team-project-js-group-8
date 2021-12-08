@@ -42,7 +42,9 @@ const modalHandler = {
          
          this.currentMovieId = movieLink.dataset.id;
 
-         Loading.pulse();
+         Loading.dots({            
+            svgColor: '#ff6b01',
+         });
          
          request.fetchMovieForModal(this.currentMovieId).then((response) => {
             
