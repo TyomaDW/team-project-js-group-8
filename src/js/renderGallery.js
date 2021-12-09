@@ -18,7 +18,7 @@ export function renderGallery(movies, genres) {
       <a href="#" class="card__link" data-id="${id}">
           <img class="card__img" src="https://image.tmdb.org/t/p/w780/${poster_path}" alt="movie's poster">
           <div class="card__wraper">
-              <h2 class="card__title">${title}</h2>
+              <h3 class="card__title">${title}</h3>
               <p class="card__info"><span class="card__info-genre">${matchedId}</span> | <span class="card__info-year">${releaseYear}</span></p>
           </div>
       </a>
