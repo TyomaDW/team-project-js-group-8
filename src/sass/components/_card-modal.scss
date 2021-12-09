@@ -131,8 +131,16 @@
   color: #8c8c8c;
 }
 
+.title_item{
+display: grid;
+grid-template-areas: "a a";
+grid-auto-columns: 100px auto;
+justify-content: start;
+}
+
 .title_item:not(:last-child) {
   margin-bottom: 10px;
+
 }
 
 .contents_value {
@@ -218,18 +226,3 @@ ul {
   padding: 1px 7px;
 }
 
-.a {
-  margin: 0 85px 0 0;
-}
-
-.b {
-  margin: 0 97px 0 0;
-}
-
-.c {
-  margin: 0 80px 0 0;
-}
-
-.d {
-  margin: 0 120px 0 0;
-}
