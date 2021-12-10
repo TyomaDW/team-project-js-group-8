@@ -3,7 +3,7 @@ axios.defaults.baseURL = `https://api.themoviedb.org/`;
 const KEY = `aa799e6d0297de166f5b00a47e312b46`;
 
 export const request = {
-  query: '',
+  searchQuery: '',
 
   async fetchTrendingMovies() {
     const response = await axios.get(`3/trending/movie/day?api_key=${KEY}`);
@@ -23,11 +23,19 @@ export const request = {
     console.log(config);
   },
 
+  async fetchMoviesOnQuery() {
+    const response = await axios.get(
+      `3/search/movie?api_key=${KEY}&language=en-US&page=1&include_adult=false&query=${this.searchQuery}`,
+    );
+    const movies = response.data.results;
+    return movies;
+  },
+
   get query() {
-    return this.query;
+    return this.searchQuery;
   },
   set query(newQuery) {
-    this.query = newQuery;
+    this.searchQuery = newQuery;
   },
 
   async fetchMovieForModal(movieId) {
@@ -38,5 +46,5 @@ export const request = {
     } catch (error) {
       console.log(error.message);
     }
-  }
+  },
 };
