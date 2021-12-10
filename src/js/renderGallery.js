@@ -5,7 +5,6 @@ export const refs = {
   searchInput: document.querySelector('.hero__form-input'),
   genreField: document.querySelector('.genre'),
   gallery: document.querySelector('.gallery__list'),
-  card: document.querySelector('.gallery__list'),
 };
 
 const erasePage = () => {
@@ -17,7 +16,10 @@ const submitHandler = e => {
   erasePage();
   request.query = refs.searchInput.value.trim();
   request.query === '' &&
-    Notiflix.Notify.info('The query string is empty! Please, type something.');
+    Notiflix.Notify.info('The query string is empty! Please, enter a title of movie.', {
+      position: 'center-center',
+      timeout: 3000,
+    });
   console.log(request.query);
   renderMoviesOnQuery();
   refs.searchForm.reset();
@@ -38,7 +40,7 @@ export function renderGallery(movies, genres) {
         return `<li class="card gallery__item">
       <a href="#" class="card__link" data-id="${id}">
       <div class ="img-wrapper">
-          <img class="card__img" src="https://via.placeholder.com/280.png?text=Image+Not+Available" alt="absence of movie's poster">
+          <img class="card__img" src="https://via.placeholder.com/280x420.png?text=Image+Not+Available" alt="absence of movie's poster">
           </div>
           <div class="card__wraper">
               <h3 class="card__title">${title}</h3>
@@ -66,9 +68,10 @@ export async function renderMoviesOnQuery() {
     const movies = await request.fetchMoviesOnQuery();
     const genres = await request.fetchGenres();
     movies.length === 0 &&
-      Notiflix.Notify.failure(
-        'Sorry! There are no movies, matching your query, found in database!',
-      );
+      Notiflix.Notify.failure('Sorry! There are no movies with such title found in database!', {
+        position: 'center-center',
+        timeout: 3000,
+      });
     const genreIds = movies.map(movie => {
       return movie.genre_ids;
     });
