@@ -40,8 +40,22 @@
     }
   }
 }
-
 .footer__link {
   color: inherit;
   text-decoration: underline;
+}
+
+.footer__text-svg {
+  animation: heartbeat 1s infinite;
+}
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(1.25) translateX(5%) translateY(5%);
+  }
+  40% {
+    transform: scale(1.5) translateX(9%) translateY(10%);
+  }
 }
