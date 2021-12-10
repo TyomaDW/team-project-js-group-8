@@ -11,12 +11,19 @@ const userLists = {
             return;
         }
 
+        this.loadInitialMovies();
         this.initWatchedMovies();
         this.initQueueMovies();
     },
 
+    loadInitialMovies: function () {
+        this.resetPage();
+        this.fetchMovies("queueMovieId");
+    },
+
     initWatchedMovies: function () {
         wachedGalleryBtn.onclick = () => {
+            this.toggleBtn();
             this.resetPage();
             this.fetchMovies("wachedMovieId");  
       }
@@ -24,8 +31,9 @@ const userLists = {
 
     initQueueMovies: function () {
         queueGalleryBtn.onclick = () => {
+            this.toggleBtn();
             this.resetPage();
-            this.fetchMovies("queueMovieId");  
+            this.fetchMovies("queueMovieId");
       }
     },
 
@@ -44,7 +52,7 @@ const userLists = {
           });
     },
     
-    renderMovie: function ({ id, genres, title, release_date, poster_path }) {
+    renderMovie: function ({ id, genres, title, release_date, poster_path, vote_average }) {
           
         let genresNames = [];
         let releaseYear = release_date.slice(0, 4);
@@ -60,7 +68,7 @@ const userLists = {
                                 <img class="card__img" src="https://image.tmdb.org/t/p/w780/${poster_path}" alt="movie's poster">
                                 <div class="card__wraper">
                                     <h3 class="card__title">${title}</h3>
-                                    <p class="card__info"><span class="card__info-genre">${renderedGenres}</span> | <span class="card__info-year">${releaseYear}</span></p>
+                                    <p class="card__info"><span class="card__info-genre">${renderedGenres}</span> | <span class="card__info-year">${releaseYear}</span><span class="highlight vote_average">${vote_average}</span></p>
                                 </div>
                             </a>
                         </li>`;
@@ -70,6 +78,11 @@ const userLists = {
 
     resetPage: function () {
         gallery.innerHTML = "";
+    },
+
+    toggleBtn: function () {
+       queueGalleryBtn.classList.toggle('is-active');
+       wachedGalleryBtn.classList.toggle('is-active');
     }
 }
 
