@@ -46,7 +46,6 @@ const userLists = {
           
           moviesIds.forEach(movieId => {
               request.fetchMovieDetails(movieId).then((data) => {
-                  console.log(data)
                 this.renderMovie(data);
               })
           });
