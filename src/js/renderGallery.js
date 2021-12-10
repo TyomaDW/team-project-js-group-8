@@ -20,7 +20,6 @@ const submitHandler = e => {
       position: 'center-center',
       timeout: 3000,
     });
-  console.log(request.query);
   renderMoviesOnQuery();
   refs.searchForm.reset();
 };

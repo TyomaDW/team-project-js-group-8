@@ -28,7 +28,6 @@ export const request = {
       `3/search/movie?api_key=${KEY}&language=en-US&page=1&include_adult=false&query=${this.searchQuery}`,
     );
     const movies = response.data.results;
-    console.log(movies);
     return movies;
   },
 
