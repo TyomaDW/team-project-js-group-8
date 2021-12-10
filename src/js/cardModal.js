@@ -7,6 +7,7 @@ const modal = document.querySelector(".modal")
 const closeBtn = document.querySelector(".close-btn")
 const wached = document.querySelector('.wached')
 const queue = document.querySelector('.queue')
+const wachedGalleryBtn = document.querySelector('.a')
 
 
 const modalHandler = {

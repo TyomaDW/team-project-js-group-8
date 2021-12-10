@@ -1,4 +1,4 @@
-import './js/card_modal';
+import './js/cardModal';
 import { refs, renderGallery } from './js/renderGallery';
 import './js/footer_modal';
 import './js/renderGallery';
