@@ -41,12 +41,12 @@ const modalHandler = {
          event.preventDefault();
          
          this.currentMovieId = movieLink.dataset.id;
- 
+
          Loading.dots({            
             svgColor: '#ff6b01',
          });
          
-         request.fetchMovieDetails(this.currentMovieId).then((response) => {
+         request.fetchMovieForModal(this.currentMovieId).then((response) => {
             
             Loading.remove();
 
@@ -120,7 +120,7 @@ const modalHandler = {
             }        
          }
       }
-   }
+   }  
 }
 
 modalHandler.init();

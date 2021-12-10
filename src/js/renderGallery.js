@@ -2,6 +2,7 @@ import { request } from './moviesApi';
 export const refs = {
   genreField: document.querySelector('.genre'),
   gallery: document.querySelector('.gallery__list'),
+  homePage: document.querySelector('#home-page')
 };
 export function renderGallery(movies, genres) {
   
@@ -29,6 +30,10 @@ export function renderGallery(movies, genres) {
 }
 
 export async function renderMainSection() {
+  if (!refs.homePage) {
+    return;
+  }
+
   try {
     const movies = await request.fetchTrendingMovies();
     const genres = await request.fetchGenres();
