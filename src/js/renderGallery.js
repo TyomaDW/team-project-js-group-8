@@ -5,6 +5,7 @@ export const refs = {
   searchInput: document.querySelector('.hero__form-input'),
   genreField: document.querySelector('.genre'),
   gallery: document.querySelector('.gallery__list'),
+  searchIcon: document.querySelector('.hero__search-icon'),
 };
 
 const erasePage = () => {
@@ -24,7 +25,7 @@ const submitHandler = e => {
   refs.searchForm.reset();
 };
 refs.searchForm.addEventListener('submit', submitHandler);
-
+refs.searchIcon.addEventListener('click', submitHandler);
 export function renderGallery(movies, genres) {
   const markup = movies
     .map(({ id, genre_ids, title, release_date, poster_path }) => {
