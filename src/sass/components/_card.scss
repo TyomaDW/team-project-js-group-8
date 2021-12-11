@@ -5,7 +5,7 @@
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
-  line-height: 16px;
+  line-height: 1.33;
   cursor: pointer;
 
   @media screen and (min-width: 768px) {
@@ -27,12 +27,19 @@
       1px 4px 6px rgba(0, 0, 0, 0.16);
   }
 }
+.card__wraper-img {
+  height: 440px;
+  width: 100%;
+  // background-size: contain;
+}
 .card__img {
+  height: 100%;
+  width: auto;
   border-radius: 5px;
   overflow: hidden;
 }
 .card__wraper {
-  margin-top: 10px;
+  padding: 10px 3px 3px;
 }
 .card__title {
   font-size: inherit;
@@ -44,4 +51,17 @@
 }
 .card__info-genre {
   word-wrap: break-word;
+}
+.card__info-vote{
+  width: 36px;
+  height: 15px;
+  line-height: 1.67;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 5px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  background: #FF6B01;
+ border-radius: 5px;
 }
