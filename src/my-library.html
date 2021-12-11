@@ -13,15 +13,17 @@
 </head>
 
 <body>
-    <div class="wrapper">
+    <div class="wrapper" id="my-library-page">
         <!-- Так добавляются фрагменты в главные HTML-файлы страниц. -->
         <include src="./partials/library-header.html"></include>
         <main>
+          <div id="snow"></div>
           <include src="./partials/gallery.html"></include>
         </main>
         <include src="./partials/footer.html"></include>
         <include src="./partials/modal_footer.html"></include>
         <include src="./partials/card-modal.html"></include>
+        <include src="./partials/spinner.html"></include>
         <!-- Скрипт идёт последним в разметке. В нём уже подключен главный SASS-файл. -->
       </div>
     <script src="./index.js"></script>

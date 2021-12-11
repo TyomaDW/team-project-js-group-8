@@ -38,7 +38,7 @@ export const request = {
     this.searchQuery = newQuery;
   },
 
-  async fetchMovieForModal(movieId) {
+  async fetchMovieDetails(movieId) {
     try {
       const response = await axios.get(`3/movie/${movieId}?api_key=${KEY}`);
       const movies = await response.data;

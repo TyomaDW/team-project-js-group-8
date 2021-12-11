@@ -1,8 +1,9 @@
-import './js/card_modal';
+import './js/cardModal';
 import { refs, renderGallery } from './js/renderGallery';
 import './js/footer_modal';
 import './js/renderGallery';
 import './js/spinner';
+import './js/userLists';
 
 import * as Snow from './js/efects/snow';
   const snow = new Snow.default({
