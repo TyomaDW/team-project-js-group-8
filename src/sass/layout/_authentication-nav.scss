@@ -1,0 +1,15 @@
+.auth__nav-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.auth__nav-item {
+  text-align: center;
+}
+.auth__nav-link {
+  padding: 10px;
+  color: var(--header-text-color);
+  &:hover {
+    background-color: rgba($color: #f5efefc0, $alpha: 0.3);
+    color: #000000;
+  }
+}

@@ -1,32 +1,38 @@
 <!DOCTYPE html>
 <html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Filmoteka</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.1.0/modern-normalize.min.css"
+      integrity="sha512-wpPYUAdjBVSE4KJnH1VR1HeZfpl1ub8YT/NKx4PuQ5NmX2tKuGu6U/JRp5y+Y8XG2tV+wKQpNHVUX03MfMFn9Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./sass/main.scss" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Filmoteka</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.1.0/modern-normalize.min.css"
-    integrity="sha512-wpPYUAdjBVSE4KJnH1VR1HeZfpl1ub8YT/NKx4PuQ5NmX2tKuGu6U/JRp5y+Y8XG2tV+wKQpNHVUX03MfMFn9Q=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="./sass/main.scss" />
-</head>
-
-<body>
-  <div class="wrapper" id="home-page">
-    <!-- Так добавляются фрагменты в главные HTML-файлы страниц. -->
-    <include src="./partials/header.html"></include>
-    <main>
-      <div id="snow"></div>
-      <include src="./partials/gallery.html"></include>
-    </main>
-    <include src="./partials/footer.html"></include>
-    <include src="./partials/modal_footer.html"></include>
-    <include src="./partials/card-modal.html"></include>
-    <include src="./partials/spinner.html"></include>
-    <!-- Скрипт идёт последним в разметке. В нём уже подключен главный SASS-файл. -->
-  </div>
-  <script src="./index.js"></script>
-</body>
-
+  <body>
+    <div class="wrapper" id="home-page">
+      <!-- Так добавляются фрагменты в главные HTML-файлы страниц. -->
+      <include src="./partials/header.html"></include>
+      <include src="./partials/form-modal.html"></include>
+      <main>
+        <div id="snow"></div>
+        <include src="./partials/gallery.html"></include>
+      </main>
+      <include src="./partials/footer.html"></include>
+      <include src="./partials/modal_footer.html"></include>
+      <include src="./partials/card-modal.html"></include>
+      <include src="./partials/spinner.html"></include>
+      <!-- Скрипт идёт последним в разметке. В нём уже подключен главный SASS-файл. -->
+    </div>
+    <script src="./index.js"></script>
+  </body>
 </html>

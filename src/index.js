@@ -4,12 +4,13 @@ import './js/footer_modal';
 import './js/renderGallery';
 import './js/spinner';
 import './js/userLists';
+import './js/authForm';
 
 import * as Snow from './js/efects/snow';
-  const snow = new Snow.default({
+const snow = new Snow.default({
   id: 'snow',
   min_size: 1,
-  max_size: 5
+  max_size: 5,
 });
 snow.start();
 
