@@ -64,13 +64,16 @@ const userLists = {
 
         const markup = `<li class="card gallery__item">
                             <a href="#" class="card__link" data-id="${id}">
+                                <div class="card__wraper-img">
                                 <img class="card__img" src="https://image.tmdb.org/t/p/w780/${poster_path}" alt="movie's poster">
+                                </div>
                                 <div class="card__wraper">
-                                    <h3 class="card__title">${title}</h3>
-                                    <p class="card__info"><span class="card__info-genre">${renderedGenres}</span> | <span class="card__info-year">${releaseYear}</span><span class="highlight vote_average">${vote_average}</span></p>
+                                <h3 class="card__title">${title}</h3>
+                                <p class="card__info"><span class="card__info-genre">${renderedGenres}</span> | <span class="card__info-year">${releaseYear}</span><span class="card__info-vote">${vote_average}</span></p>
                                 </div>
                             </a>
                         </li>`;
+                        
         
         gallery.insertAdjacentHTML('beforeend', markup);
     },
