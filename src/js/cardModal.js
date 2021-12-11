@@ -1,7 +1,7 @@
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import { request } from './moviesApi';
 
-const gallaryContainer = document.querySelector(".gallery__list")
+const galleryContainer = document.querySelector(".gallery__list")
 
 const modal = document.querySelector(".modal")
 const closeBtn = document.querySelector(".close-btn")
@@ -14,7 +14,7 @@ const modalHandler = {
    closeOnEscape: null,
 
    init: function () {
-      if (!gallaryContainer) {
+      if (!galleryContainer) {
          return;
       }
       this.initModal();
@@ -31,7 +31,7 @@ const modalHandler = {
          }
       }
       
-      gallaryContainer.onclick = (event) => {
+      galleryContainer.onclick = (event) => {
          const movieLink = event.target.closest(".card__link");
          
          if (!movieLink) {
@@ -84,42 +84,32 @@ const modalHandler = {
 
    initToWached: function () {
       wached.onclick = () => {
-         if (localStorage.getItem("wachedMovieId") === null) {
-            const wachedMoviesIds = [];
-            wachedMoviesIds.push(this.currentMovieId);
-            localStorage.setItem("wachedMovieId", JSON.stringify(wachedMoviesIds)); 
-         } else {
-            const wachedMoviesIdsSaved = JSON.parse(localStorage.getItem("wachedMovieId"));
-            const hasMovie = wachedMoviesIdsSaved.find((element) => {
-               return element === this.currentMovieId
-            });
-
-            if (hasMovie === undefined) {
-               wachedMoviesIdsSaved.push(this.currentMovieId);
-               localStorage.setItem("wachedMovieId", JSON.stringify(wachedMoviesIdsSaved));
-            }        
-         }
+         this.addToLocalStorage("wachedMovieId");
       }
    },
 
    initToQueue: function () {
       queue.onclick = () => {
-         if (localStorage.getItem("queueMovieId") === null) {
-            const queueMoviesIds = [];
-            queueMoviesIds.push(this.currentMovieId);
-            localStorage.setItem("queueMovieId", JSON.stringify(queueMoviesIds)); 
+         this.addToLocalStorage("queueMovieId");
+      }
+   },
+
+   addToLocalStorage: function (key) {
+      if (localStorage.getItem(key) === null) {
+            const moviesIds = [];
+            moviesIds.push(this.currentMovieId);
+            localStorage.setItem(key, JSON.stringify(moviesIds)); 
          } else {
-            const queueMoviesIdsSaved = JSON.parse(localStorage.getItem("queueMovieId"));
-            const hasMovie = queueMoviesIdsSaved.find((element) => {
+            const moviesIdsSaved = JSON.parse(localStorage.getItem(key));
+            const hasMovie = moviesIdsSaved.find((element) => {
                return element === this.currentMovieId
             });
 
             if (hasMovie === undefined) {
-               queueMoviesIdsSaved.push(this.currentMovieId);
-               localStorage.setItem("queueMovieId", JSON.stringify(queueMoviesIdsSaved));
+               moviesIdsSaved.push(this.currentMovieId);
+               localStorage.setItem(key, JSON.stringify(moviesIdsSaved));
             }        
          }
-      }
    }
 }
 
