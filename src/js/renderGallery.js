@@ -5,7 +5,7 @@ export const refs = {
   searchInput: document.querySelector('.hero__form-input'),
   genreField: document.querySelector('.genre'),
   gallery: document.querySelector('.gallery__list'),
-  homePage: document.querySelector('#home-page')
+  homePage: document.querySelector('#home-page'),
   searchIcon: document.querySelector('.hero__search-icon'),
 };
 
