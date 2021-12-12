@@ -4,6 +4,7 @@ import { getAnalytics } from 'firebase/analytics';
 import * as auth from 'firebase/auth';
 import { doc, getFirestore } from 'firebase/firestore';
 import { refs } from './authForm';
+import Notiflix from 'notiflix';
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -23,28 +24,61 @@ const firebaseConfig = {
 // Initialize Firebase and firestore
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
-const authenticate = auth.getAuth();
+const identity = auth.getAuth();
 const db = getFirestore();
-console.log(authenticate);
-
 const signUpForm = document.querySelector('#sign-up__form');
 const signInForm = document.querySelector('#sign-in__form');
+
+// check state
+let isSignedIn;
+auth.onAuthStateChanged(identity, user => {
+  if (user) {
+    isSignedIn = true;
+    console.log(isSignedIn);
+  } else {
+    console.log('Please sign up or sign in!');
+    isSignedIn = false;
+    console.log(isSignedIn);
+  }
+});
+
+// sign up
 
 signUpForm.addEventListener('submit', e => {
   e.preventDefault();
   const email = signUpForm['sign-up__email'].value;
   const password = signUpForm['sign-up__password'].value;
   console.log(email, password);
-  auth.createUserWithEmailAndPassword(authenticate, email, password).then(credentials => {
-    console.log(credentials.user).catch(error => {
-      console.log(error);
-    });
+  auth.createUserWithEmailAndPassword(identity, email, password).catch(error => console.log(error));
+  refs.signUpModal.style.display = 'none';
+  signUpForm.reset();
+  Notiflix.Notify.success('Your profile was successfully created. Welcome to Filmoteka!', {
+    position: 'center-center',
+    timeout: 3000,
   });
 });
+
+// sign in
 
 signInForm.addEventListener('submit', e => {
   e.preventDefault();
   const email = signInForm['sign-in__email'].value;
   const password = signInForm['sign-in__password'].value;
+  auth.signInWithEmailAndPassword(identity, email, password).catch(error => console.log(error));
+
+  refs.signInModal.style.display = 'none';
+  signInForm.reset();
   console.log(email, password);
+});
+
+// log out
+
+refs.logoutTrigger.addEventListener('click', e => {
+  e.preventDefault();
+  auth.signOut(identity).then(() => {
+    Notiflix.Notify.warning(`You was successfully logged out.Bye!`, {
+      position: 'center-center',
+      timeout: 3000,
+    });
+  });
 });

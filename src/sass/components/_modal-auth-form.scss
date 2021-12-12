@@ -11,8 +11,16 @@
   align-items: center;
 }
 .input {
+  background-color: rgba($color: #3575aa, $alpha: 0.5);
+  color: var(--header-txt-color);
+  border: none;
+  border-radius: 30px;
+  border-bottom: 1px solid #ddc5c5;
   &:not(:first-child) {
     margin-top: 20px;
+  }
+  &::placeholder {
+    color: var(--header-txt-color);
   }
 }
 .label {
@@ -31,10 +39,11 @@
   margin-top: 20px;
   padding: 15px;
   border-radius: 30px;
-  background-color: rgba($color: #3575aa, $alpha: 0.8);
+  color: var(--header-txt-color);
+  background-color: rgba($color: #3575aa, $alpha: 0.5);
   cursor: pointer;
   &:hover {
-    background-color: rgba($color: #87df15, $alpha: 0.8);
+    background-color: rgba($color: #87df15, $alpha: 0.5);
   }
 }
 .close-symbol {

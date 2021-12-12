@@ -1,3 +1,5 @@
+import { doc } from 'firebase/firestore';
+
 export const refs = {
   loginTrigger: document.querySelector('#login-trigger'),
   signUpTrigger: document.querySelector('#sign-up-trigger'),
@@ -6,6 +8,7 @@ export const refs = {
   signInClose: document.querySelector('.sign-in__close'),
   signUpClose: document.querySelector('.sign-up__close'),
   logoutTrigger: document.querySelector('#logout-trigger'),
+  authNav: document.querySelector('.auth__nav-list'),
 };
 const headerHeight = document.querySelector('.header').clientHeight;
 const formWrapper = document.querySelectorAll('.flex-container');
