@@ -8,6 +8,9 @@ export const request = {
   async fetchTrendingMovies() {
     const response = await axios.get(`3/trending/movie/day?api_key=${KEY}`);
     const movies = response.data.results;
+    const quantity = response.data.total_results;
+    console.log(movies);
+    console.log(quantity);
     return movies;
   },
 

@@ -62,19 +62,34 @@ const signInForm = document.querySelector('#sign-in__form');
 
 export let signedIn;
 auth.onAuthStateChanged(identity, user => {
+  const homePage = document.querySelector('#home-page');
   if (user) {
     signedIn = true;
-    refs.libraryTrigger.style.display = 'block';
+
+    if (homePage) {
+      refs.libraryRef.setAttribute('href', './my-library.html');
+    }
+
+    // refs.libraryTrigger.style.display = 'block';
     refs.signInTrigger.style.display = 'none';
     refs.signUpTrigger.style.display = 'none';
     refs.logoutTrigger.style.display = 'block';
     console.log(signedIn);
   } else {
     console.log('Please sign up or sign in!');
-    refs.libraryTrigger.style.display = 'none';
+    // refs.libraryTrigger.style.display = 'none';
     refs.signInTrigger.style.display = 'block';
     refs.signUpTrigger.style.display = 'block';
     refs.logoutTrigger.style.display = 'none';
+    refs.libraryRef.addEventListener('click', () => {
+      Notiflix.Notify.failure(
+        'Access to the library page is allowed only for registered users. Please sign in!',
+        {
+          position: 'top-right',
+          timeout: 3000,
+        },
+      );
+    });
     signedIn = false;
     console.log(signedIn);
   }
@@ -90,7 +105,7 @@ signUpForm.addEventListener('submit', e => {
   refs.signUpModal.style.display = 'none';
   signUpForm.reset();
   Notiflix.Notify.success('Your profile was successfully created. Welcome to Filmoteka!', {
-    position: 'center-center',
+    position: 'top-right',
     timeout: 3000,
   });
 });
@@ -111,8 +126,9 @@ signInForm.addEventListener('submit', e => {
 refs.logoutTrigger.addEventListener('click', e => {
   e.preventDefault();
   auth.signOut(identity).then(() => {
-    Notiflix.Notify.warning(`You was successfully logged out.Bye!`, {
-      position: 'center-center',
+    refs.libraryRef.setAttribute('href', '#');
+    Notiflix.Notify.info(`You was successfully logged out.Bye!`, {
+      position: 'top-right',
       timeout: 3000,
     });
   });
