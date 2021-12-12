@@ -10,6 +10,7 @@ export const refs = {
   logoutTrigger: document.querySelector('#logout-trigger'),
   authNav: document.querySelector('.auth__nav-list'),
   libraryTrigger: document.querySelector('#library-trigger'),
+  libraryRef: document.querySelector('#onlyForRegistered'),
 };
 const headerHeight = document.querySelector('.header').clientHeight;
 const formWrapper = document.querySelectorAll('.flex-container');
