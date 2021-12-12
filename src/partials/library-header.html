@@ -1,13 +1,13 @@
 <header class="header header--library">
   <div class="container">
-    <div class="flex-wrapper--library">
+    <div class="flex-wrapper">
       <div class="logo">
         <a href="./index.html" class="logo__link">
-          <svg class="logo__icon">
+          <svg class="logo__icon" width="24" height="24">
             <use href="./img/header/symbol-defs.svg#icon-film"></use>
           </svg>
+          <span class="app-name">Filmoteka</span>
         </a>
-        <span class="app-name">Filmoteka</span>
       </div>
       <nav class="nav">
         <ul class="nav__list">
@@ -20,16 +20,14 @@
         </ul>
       </nav>
     </div>
-    <section class="hero--library">
-      <h2 class="visually-hidden">YOURS LIBRARY</h2>
-      <ul class="filter__list">
-        <li class="filter__item">
-          <button class="filter__btn watched_list" type="button">Watched</button>
-        </li>
-        <li class="filter__item">
-          <button class="filter__btn is-active queue_list" type="button">Queue</button>
-        </li>
-      </ul>      
-    </section>
+    <h1 class="visually-hidden">MY LIBRARY</h1>
+    <ul class="filter__list">
+      <li class="filter__item">
+        <button class="filter__btn watched_list" type="button">Watched</button>
+      </li>
+      <li class="filter__item">
+        <button class="filter__btn is-active queue_list" type="button">Queue</button>
+      </li>
+    </ul>
   </div>
 </header>
