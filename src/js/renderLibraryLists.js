@@ -23,8 +23,7 @@ const userLists = {
 
     initWatchedMovies: function () {
         wachedGalleryBtn.onclick = () => {
-            this.removeIsactive(wachedGalleryBtn);
-            this.removeIsactive(queueGalleryBtn);
+            this.toggleBtn();
             this.resetPage();
             this.fetchMovies("wachedMovieId");  
       }
@@ -32,7 +31,7 @@ const userLists = {
 
     initQueueMovies: function () {
         queueGalleryBtn.onclick = () => {
-            this.removeIsactive(queueGalleryBtn);
+            this.toggleBtn();
             this.resetPage();
             this.fetchMovies("queueMovieId");
       }
@@ -83,10 +82,9 @@ const userLists = {
         gallery.innerHTML = "";
     },
 
-    removeIsactive: function (element) {
-        if (element.classList.contains('is-active') === true) {
-            element.classList.remove('is-active');
-        }     
+    toggleBtn: function () {
+       queueGalleryBtn.classList.toggle('is-active');
+       wachedGalleryBtn.classList.toggle('is-active');
     }
 }
 

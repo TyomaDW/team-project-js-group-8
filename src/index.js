@@ -1,8 +1,10 @@
 import './js/cardModal';
-import { refs, renderGallery } from './js/renderGallery';
+import { refs, renderGallery } from './js/renderHomeGallery';
 import './js/footer_modal';
-import './js/renderGallery';
-import './js/spinner';
+
+import './js/renderHomeGallery';
+import './js/renderLibraryLists';
+import './js/templates/spinner';
 import './js/userLists';
 import './js/authForm';
 import './js/firebase';
