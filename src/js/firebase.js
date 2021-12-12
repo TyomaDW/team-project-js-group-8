@@ -104,7 +104,6 @@ signInForm.addEventListener('submit', e => {
   auth.signInWithEmailAndPassword(identity, email, password).catch(error => console.log(error));
   refs.signInModal.style.display = 'none';
   signInForm.reset();
-  console.log(email, password);
 });
 
 // log out
