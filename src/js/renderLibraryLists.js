@@ -75,9 +75,7 @@ const userLists = {
 
     gallery.insertAdjacentHTML('beforeend', markup);
     const element = document.querySelectorAll('.card');
-    VanillaTilt.init(element, {
-      scale: 1.1,
-    });
+    VanillaTilt.init(element);
   },
 
   resetPage: function () {

@@ -53,9 +53,7 @@ export async function renderMainSection() {
     });
     renderGallery(movies, genres);
     const element = document.querySelectorAll('.card');
-    VanillaTilt.init(element, {
-      scale: 1.1,
-    });
+    VanillaTilt.init(element);
   } catch (error) {
     console.log(error.message);
   }
