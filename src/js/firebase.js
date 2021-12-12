@@ -21,6 +21,35 @@ const firebaseConfig = {
   measurementId: 'G-R25JXZ3JWZ',
 };
 
+// listeners
+
+refs.loginTrigger.addEventListener('click', () => {
+  if (signedIn) {
+    Notiflix.Notify.failure('You are already signed in!', {
+      position: 'center-center',
+      timeout: 3000,
+    });
+    return;
+  }
+  refs.signInModal.style.display = 'block';
+});
+refs.signUpTrigger.addEventListener('click', () => {
+  if (signedIn) {
+    Notiflix.Notify.failure('You are already signed in!', {
+      position: 'center-center',
+      timeout: 3000,
+    });
+    return;
+  }
+  refs.signUpModal.style.display = 'block';
+});
+refs.signInClose.addEventListener('click', () => {
+  refs.signInModal.style.display = 'none';
+});
+refs.signUpClose.addEventListener('click', () => {
+  refs.signUpModal.style.display = 'none';
+});
+
 // Initialize Firebase and firestore
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
@@ -30,15 +59,24 @@ const signUpForm = document.querySelector('#sign-up__form');
 const signInForm = document.querySelector('#sign-in__form');
 
 // check state
-let isSignedIn;
+
+export let signedIn;
 auth.onAuthStateChanged(identity, user => {
   if (user) {
-    isSignedIn = true;
-    console.log(isSignedIn);
+    signedIn = true;
+    refs.libraryTrigger.style.display = 'block';
+    refs.signInTrigger.style.display = 'none';
+    refs.signUpTrigger.style.display = 'none';
+    refs.logoutTrigger.style.display = 'block';
+    console.log(signedIn);
   } else {
     console.log('Please sign up or sign in!');
-    isSignedIn = false;
-    console.log(isSignedIn);
+    refs.libraryTrigger.style.display = 'none';
+    refs.signInTrigger.style.display = 'block';
+    refs.signUpTrigger.style.display = 'block';
+    refs.logoutTrigger.style.display = 'none';
+    signedIn = false;
+    console.log(signedIn);
   }
 });
 
