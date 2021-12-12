@@ -1,4 +1,4 @@
-import {refs} from './refs'
+import { refs } from './refs';
 export default function renderGallery(movies, genres) {
   const markup = movies
     .map(({ id, genre_ids, title, release_date, poster_path }) => {
@@ -9,7 +9,8 @@ export default function renderGallery(movies, genres) {
           matchedId.push(genre.name);
         }
       });
-      let cardMatchedId = (matchedId.length < 3) ? (matchedId) : `${matchedId[0]}, ${matchedId[1]}, other`;
+      let cardMatchedId =
+        matchedId.length < 3 ? matchedId : `${matchedId[0]}, ${matchedId[1]}, other`;
       if (poster_path === null) {
         return `<li class="card gallery__item">
           <a href="#" class="card__link" data-id="${id}">

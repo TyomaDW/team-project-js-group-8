@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "axios": "^0.24.0",
-    "notiflix": "^3.2.2"
+    "notiflix": "^3.2.2",
+    "vanilla-tilt": "^1.7.2"
   }
 }
