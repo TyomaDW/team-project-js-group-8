@@ -1,15 +1,26 @@
 .auth__nav-list {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  justify-content: flex-end;
 }
 .auth__nav-item {
-  text-align: center;
+  &:not(:first-child) {
+    margin-left: 40px;
+  }
 }
 .auth__nav-link {
-  padding: 10px;
+  padding: 10px 0px;
   color: var(--header-text-color);
   &:hover {
+    border-radius: 20%;
     background-color: rgba($color: #f5efefc0, $alpha: 0.3);
     color: #000000;
+    cursor: pointer;
   }
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.16;
+}
+#logout-trigger {
+  position: fixed;
+  display: none;
 }

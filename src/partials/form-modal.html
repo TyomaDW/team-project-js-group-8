@@ -1,25 +1,39 @@
-<div id="sign-up" class="modal-form">
+<div id="sign-up" class="backdrop">
   <form id="sign-up__form" class="flex-container" action="">
-    <label class="label" for="sign-up__email">Email address</label>
-    <input type="email" class="input" id="sign-up__email" required />
+    <label class="label" for="sign-up__email"></label>
+    <input type="email" class="input" id="sign-up__email" placeholder="Enter email" required />
 
-    <label class="label" for="sign-up__password">Enter password</label>
-    <input type="password" class="input" id="sign-up__password" required />
+    <label class="label" for="sign-up__password"></label>
+    <input
+      autocomplete=""
+      type="password"
+      class="input"
+      id="sign-up__password"
+      placeholder="Create password"
+      required
+    />
 
-    <button type="submit" class="sign-up__button">Sign Up!</button>
+    <button type="submit" class="form-button">Sign Up!</button>
+    <span class="sign-up__close"><a class="close-symbol" href="#">x</a></span>
   </form>
-  <span class="sign-up__close"><a href="#">x</a></span>
 </div>
 
-<div id="sign-in" class="modal-form container">
+<div id="sign-in" class="backdrop">
   <form id="sign-in__form" class="flex-container" action="">
-    <label class="label" for="sign-in__email">Email address</label>
-    <input type="email" class="input" id="sign-in__email" required />
+    <label class="label" for="sign-in__email"></label>
+    <input type="email" class="input" id="sign-in__email" placeholder="Enter email" required />
 
-    <label class="label" for="sign-in__password">Enter password</label>
-    <input type="password" class="input" id="sign-in__password" required />
+    <label class="label" for="sign-in__password"></label>
+    <input
+      autocomplete=""
+      type="password"
+      class="input"
+      id="sign-in__password"
+      placeholder="Enter password"
+      required
+    />
 
-    <button type="submit" class="sign-in__button">Sign Up!</button>
+    <button type="submit" class="form-button">Sign In!</button>
+    <span class="sign-in__close"><a class="close-symbol" href="#">x</a></span>
   </form>
-  <span class="sign-in__close"><a href="#">x</a></span>
 </div>

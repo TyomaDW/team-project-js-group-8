@@ -1,11 +1,3 @@
-.modal-form {
-  position: fixed;
-  height: 100vh;
-  width: 100%;
-  z-index: 999;
-
-  background-color: rgba($color: #000000, $alpha: 0.3);
-}
 #sign-up {
   display: none;
 }
@@ -13,20 +5,38 @@
   display: none;
 }
 .flex-container {
+  position: relative;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
 }
 .input {
+  &:not(:first-child) {
+    margin-top: 20px;
+  }
 }
 .label {
 }
 .sign-up__close,
 .sign-in__close {
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: -15px;
+  right: 43%;
 
   padding: 10px;
   font-weight: bolder;
+  font-size: 2rem;
+}
+.form-button {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 30px;
+  background-color: rgba($color: #3575aa, $alpha: 0.8);
+  cursor: pointer;
+  &:hover {
+    background-color: rgba($color: #87df15, $alpha: 0.8);
+  }
+}
+.close-symbol {
+  color: #f30d0d;
 }

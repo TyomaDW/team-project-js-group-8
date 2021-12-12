@@ -5,6 +5,7 @@ import './js/renderGallery';
 import './js/spinner';
 import './js/userLists';
 import './js/authForm';
+import './js/firebase';
 
 import * as Snow from './js/efects/snow';
 const snow = new Snow.default({
