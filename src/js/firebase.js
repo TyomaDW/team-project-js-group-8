@@ -86,7 +86,6 @@ signUpForm.addEventListener('submit', e => {
   e.preventDefault();
   const email = signUpForm['sign-up__email'].value;
   const password = signUpForm['sign-up__password'].value;
-  console.log(email, password);
   auth.createUserWithEmailAndPassword(identity, email, password).catch(error => console.log(error));
   refs.signUpModal.style.display = 'none';
   signUpForm.reset();
@@ -103,7 +102,6 @@ signInForm.addEventListener('submit', e => {
   const email = signInForm['sign-in__email'].value;
   const password = signInForm['sign-in__password'].value;
   auth.signInWithEmailAndPassword(identity, email, password).catch(error => console.log(error));
-
   refs.signInModal.style.display = 'none';
   signInForm.reset();
   console.log(email, password);
