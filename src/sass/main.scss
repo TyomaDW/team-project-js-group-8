@@ -8,8 +8,10 @@
 
 @import './layout/header';
 @import './layout/hero';
+@import './layout/authentication-nav';
 @import './layout/gallery';
 @import './layout/footer';
 
 @import './components/card-modal';
 @import './components/modal_footer';
+@import './components/modal-auth-form';

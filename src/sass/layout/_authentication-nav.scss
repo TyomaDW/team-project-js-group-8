@@ -1,0 +1,28 @@
+.auth__nav-list {
+  display: flex;
+  justify-content: flex-end;
+}
+.auth__nav-item {
+  &:not(:first-child) {
+    margin-left: 40px;
+  }
+}
+.auth__nav-link {
+  padding: 10px 0px;
+  color: var(--header-text-color);
+  &:hover {
+    border-radius: 20%;
+    background-color: rgba($color: #f5efefc0, $alpha: 0.3);
+    color: #000000;
+    cursor: pointer;
+  }
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.16;
+}
+.auth__nav-list {
+}
+.logout-menu {
+}
+#logout-trigger {
+}
