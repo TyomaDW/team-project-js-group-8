@@ -1,11 +1,19 @@
 const scrollBtn = document.querySelector('.isShowBtn');
 
-window.onscroll = () =>  {
-    if(window.scrollY >= 700) {
+scrollBtn.addEventListener('click', onClick);
+window.addEventListener('scroll', onScroll);
+
+function onScroll() {
+    if(window.scrollY < 300) {
+        scrollBtn.classList.remove('isShowBtn_show');
+    } else if(window.scrollY >= 300) {
+        scrollBtn.classList.remove('isShowBtn_hide');
         scrollBtn.classList.add('isShowBtn_show');
     }
 }
 
-scrollBtn.onclick = () => {
+function onClick() {
+    scrollBtn.classList.add('isShowBtn_hide');
     window.scrollTo(0, 0);
+    onScroll();
 }
