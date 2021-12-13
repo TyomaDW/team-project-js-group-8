@@ -22,6 +22,7 @@ const modalHandler = {
       this.initModal();
       this.initToWached();
       this.initToQueue();
+      this.removeWatchedItem();
    },
 
    initModal: function () {
@@ -67,6 +68,8 @@ const modalHandler = {
             
             modal.style.display = "block"
 
+            this.findMovieId();
+
             document.addEventListener('keydown', this.closeOnEscape);
          });
       }
@@ -96,6 +99,39 @@ const modalHandler = {
       }
    },
 
+   addHiddenWatchedBtn: function () {
+      wached.classList.add('hidden');
+      removeWatchedBtn.classList.remove('hidden');
+   },
+
+   addHiddenQueueBtn: function () {
+      queue.classList.add('hidden');
+      removeQueueBtn.classList.remove('hidden');
+   },
+
+   removeHiddenWatchedBtn: function () {
+      wached.classList.remove('hidden');
+      removeWatchedBtn.classList.add('hidden');
+   },
+
+   removeHiddenQueueBtn: function () {
+      queue.classList.remove('hidden');
+      removeQueueBtn.classList.add('hidden');
+   },
+
+   removeWatchedItem: function () {
+      removeWatchedBtn.onclick = () => {
+         this.removeLocalStorageItem("watchedMovieId");
+         
+      }
+   },
+
+   removeQueueItem: function () {
+      removeQueueBtn.onclick = () => {
+         this.removeLocalStorageItem("queueMovieId");
+      }
+   },
+
    addToLocalStorage: function (key) {
       if (localStorage.getItem(key) === null) {
             const moviesIds = [];
@@ -114,18 +150,35 @@ const modalHandler = {
          }
    },
 
-   toggleWatchedBtn: function () {
-      wached.classList.add('hidden');
-      removeWatchedBtn.classList.remove('hidden')
-   },
-
-   toggleQueueBtn: function () {
-      queue.classList.add('hidden');
-      removeQueueBtn.classList.remove('hidden')
-   },
-
+   findMovieId: function () {
+      const localStorageData = JSON.parse(localStorage.getItem("watchedMovieId"));
+         
+      const hasMovie = localStorageData.find((movieId) => {
    
-}
+            if (!movieId === this.currentMovieId) {
+               return;
+            } else {
+               console.log(movieId)
+               console.log(this.currentMovieId)
+               console.log('dgsdfgsdf')
+            }          
+      });
+   },
+
+   removeLocalStorageItem: function (key) {
+      const localStorageData = JSON.parse(localStorage.getItem(key));
+         
+      const hasMovie = localStorageData.find((movieId) => {
+            return movieId === this.currentMovieId; 
+      });
+
+      const indexId = localStorageData.indexOf(hasMovie); 
+      localStorageData.splice(indexId, 1);
+
+      localStorage.setItem(key, JSON.stringify(localStorageData));
+   }
+
+   }
 
 modalHandler.init();
 
