@@ -1,68 +1,67 @@
-import { request } from './moviesApi'; 
+import { request } from './moviesApi';
 
-const wachedGalleryBtn = document.querySelector('.watched_list')
-const queueGalleryBtn = document.querySelector('.queue_list')
+const wachedGalleryBtn = document.querySelector('.watched_list');
+const queueGalleryBtn = document.querySelector('.queue_list');
 const gallery = document.querySelector('.gallery__list');
 const myLibraryPage = document.querySelector('#my-library-page');
 
 const userLists = {
-    init: function () {
-        if (!myLibraryPage) {
-            return;
-        }
+  init: function () {
+    if (!myLibraryPage) {
+      return;
+    }
 
-        this.loadInitialMovies();
-        this.initWatchedMovies();
-        this.initQueueMovies();
-    },
+    this.loadInitialMovies();
+    this.initWatchedMovies();
+    this.initQueueMovies();
+  },
 
-    loadInitialMovies: function () {
-        this.resetPage();
-        this.fetchMovies("queueMovieId");
-    },
+  loadInitialMovies: function () {
+    this.resetPage();
+    this.fetchMovies('queueMovieId');
+  },
 
-    initWatchedMovies: function () {
-        wachedGalleryBtn.onclick = () => {
-            this.toggleBtn();
-            this.resetPage();
-            this.fetchMovies("wachedMovieId");  
-      }
-    },
+  initWatchedMovies: function () {
+    wachedGalleryBtn.onclick = () => {
+      this.toggleBtn();
+      this.resetPage();
+      this.fetchMovies('wachedMovieId');
+    };
+  },
 
-    initQueueMovies: function () {
-        queueGalleryBtn.onclick = () => {
-            this.toggleBtn();
-            this.resetPage();
-            this.fetchMovies("queueMovieId");
-      }
-    },
+  initQueueMovies: function () {
+    queueGalleryBtn.onclick = () => {
+      this.toggleBtn();
+      this.resetPage();
+      this.fetchMovies('queueMovieId');
+    };
+  },
 
-    fetchMovies: function (storageKey) {
-        const moviesIds = JSON.parse(localStorage.getItem(storageKey));
-        
-        if (!moviesIds) {
-            return;
-          }
-          
-          moviesIds.forEach(movieId => {
-              request.fetchMovieDetails(movieId).then((data) => {
-                this.renderMovie(data);
-              })
-          });
-    },
-    
-    renderMovie: function ({ id, genres, title, release_date, poster_path, vote_average }) {
-          
-        let genresNames = [];
-        let releaseYear = release_date.slice(0, 4);
-        
-        genres.forEach(genre => {
-           genresNames.push(genre.name)
-        });
+  fetchMovies: function (storageKey) {
+    const moviesIds = JSON.parse(localStorage.getItem(storageKey));
 
-        const renderedGenres = genresNames.join(", ");
+    if (!moviesIds) {
+      return;
+    }
 
-        const markup = `<li class="card gallery__item">
+    moviesIds.forEach(movieId => {
+      request.fetchMovieDetails(movieId).then(data => {
+        this.renderMovie(data);
+      });
+    });
+  },
+
+  renderMovie: function ({ id, genres, title, release_date, poster_path, vote_average }) {
+    let genresNames = [];
+    let releaseYear = release_date.slice(0, 4);
+
+    genres.forEach(genre => {
+      genresNames.push(genre.name);
+    });
+
+    const renderedGenres = genresNames.join(', ');
+
+    const markup = `<li class="card gallery__item">
                             <a href="#" class="card__link" data-id="${id}">
                                 <div class="card__wraper-img">
                                 <img class="card__img" src="https://image.tmdb.org/t/p/w780/${poster_path}" alt="movie's poster">
@@ -73,20 +72,19 @@ const userLists = {
                                 </div>
                             </a>
                         </li>`;
-                        
-        
-        gallery.insertAdjacentHTML('beforeend', markup);
-    },
 
-    resetPage: function () {
-        gallery.innerHTML = "";
-    },
+    gallery.insertAdjacentHTML('beforeend', markup);
+  },
 
-    toggleBtn: function () {
-       queueGalleryBtn.classList.toggle('is-active');
-       wachedGalleryBtn.classList.toggle('is-active');
-    }
-}
+  resetPage: function () {
+    gallery.innerHTML = '';
+  },
+
+  toggleBtn: function () {
+    queueGalleryBtn.classList.toggle('is-active');
+    wachedGalleryBtn.classList.toggle('is-active');
+  },
+};
 
 userLists.init();
 
