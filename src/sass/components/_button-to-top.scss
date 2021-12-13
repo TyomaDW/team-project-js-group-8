@@ -1,0 +1,40 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 350vh;
+}
+
+.arrow-up {
+    position: fixed;
+    bottom: 5%;
+    right: 5%;
+    color: rgb(255, 145, 0);
+    width: 70px;
+    height: 70px;
+    background-color: linear-gradient(130deg, #504135 50%, #ff9e1f 50%);
+    -webkit-background-size: 300%;
+    background-size: 300%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-size: 50px;
+    border-radius: 5px;
+}
+
+.arrow-up:hover {
+    background-position: 100% 0;
+}
+
+.isShowBtn {
+    opacity: 0;
+    transition: .5s;
+
+    &_show {
+        opacity: 1;
+    }
+}
