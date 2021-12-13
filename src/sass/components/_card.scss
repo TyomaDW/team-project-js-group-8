@@ -23,6 +23,7 @@
 
   &:hover,
   &:focus {
+    transform: scale(1.1, 1.1);
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
       1px 4px 6px rgba(0, 0, 0, 0.16);
   }
@@ -52,7 +53,7 @@
 .card__info-genre {
   word-wrap: break-word;
 }
-.card__info-vote{
+.card__info-vote {
   width: 36px;
   height: 15px;
   line-height: 1.67;
@@ -61,7 +62,7 @@
   justify-content: center;
   margin-left: 5px;
   text-transform: uppercase;
-  color: #FFFFFF;
-  background: #FF6B01;
- border-radius: 5px;
+  color: #ffffff;
+  background: #ff6b01;
+  border-radius: 5px;
 }

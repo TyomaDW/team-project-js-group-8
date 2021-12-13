@@ -2,6 +2,7 @@ import { request } from './moviesApi';
 import { refs } from './templates/refs';
 import renderGallery from './templates/createCardMarkup';
 import Notiflix from 'notiflix';
+import VanillaTilt from 'vanilla-tilt';
 const homePage = document.querySelector('#home-page');
 const erasePage = () => {
   refs.gallery.innerHTML = '';
@@ -55,6 +56,8 @@ export async function renderMainSection() {
       return movie.genre_ids;
     });
     renderGallery(movies, genres);
+    const element = document.querySelectorAll('.card');
+    VanillaTilt.init(element);
   } catch (error) {
     console.log(error.message);
   }
