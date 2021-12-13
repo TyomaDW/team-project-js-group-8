@@ -9,7 +9,7 @@ body {
 
 .arrow-up {
     position: fixed;
-    bottom: 10%;
+    bottom: 11%;
     right: 5%;
     background-color: rgb(66, 65, 65);
     color: rgb(255, 145, 0);
@@ -26,7 +26,6 @@ body {
 }
 
 .arrow-up:hover {
-    // background-position: 100% 0;
     color: rgb(66, 65, 65);
     background-color: rgb(255, 145, 0);
 }
@@ -37,18 +36,11 @@ body {
 
     &_show {
         opacity: 1;
+        transition: .5s;
     }
 
     &_hide {
         opacity: 0;
+        transition: .5s;
     }
 }
-
-// .isHideBtn {
-//     opacity: 0;
-//     transition: .5s;
-// }
-
-// .isShowBtn {
-//     opacity: 1;
-// }
