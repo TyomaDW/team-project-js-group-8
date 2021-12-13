@@ -190,7 +190,9 @@ justify-content: start;
 }
 
 .modal_card_btn:hover,
-.modal_card_btn:focus {
+.modal_card_btn:focus,
+.remove_watched:hover,
+.remove_watched:focus {
   color: var(--modal-bg-color);
   background-color: var(--active-color);
   outline: none;
@@ -224,5 +226,9 @@ ul {
   background-color: #f7f7f7;
   border-radius: 5px;
   padding: 1px 7px;
+}
+
+.hidden {
+  display: none;
 }
 
