@@ -5,8 +5,10 @@ const galleryContainer = document.querySelector(".gallery__list")
 
 const modal = document.querySelector(".modal")
 const closeBtn = document.querySelector(".close-btn")
-const wached = document.querySelector('.wached')
+const wached = document.querySelector('.watched')
 const queue = document.querySelector('.queue')
+const removeWatchedBtn = document.querySelector('.remove_watched')
+const removeQueueBtn = document.querySelector('.remove_queue')
 
 
 const modalHandler = {
@@ -84,7 +86,7 @@ const modalHandler = {
 
    initToWached: function () {
       wached.onclick = () => {
-         this.addToLocalStorage("wachedMovieId");
+         this.addToLocalStorage("watchedMovieId");
       }
    },
 
@@ -110,7 +112,19 @@ const modalHandler = {
                localStorage.setItem(key, JSON.stringify(moviesIdsSaved));
             }        
          }
-   }
+   },
+
+   toggleWatchedBtn: function () {
+      wached.classList.add('hidden');
+      removeWatchedBtn.classList.remove('hidden')
+   },
+
+   toggleQueueBtn: function () {
+      queue.classList.add('hidden');
+      removeQueueBtn.classList.remove('hidden')
+   },
+
+   
 }
 
 modalHandler.init();
