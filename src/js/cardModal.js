@@ -21,10 +21,10 @@ const modalHandler = {
          return;
       }
       this.initModal();
-      this.initToWached();
-      this.initToQueue();
-      this.removeWatchedItem();
-      this.removeQueueItem();
+      this.initAddToWached();
+      this.initAddToQueue();
+      this.initRemoveWatchedItem();
+      this.initRemoveQueueItem();
    },
 
    initModal: function () {
@@ -101,7 +101,7 @@ const modalHandler = {
       }
    },
 
-   initToWached: function () {
+   initAddToWached: function () {
       wached.onclick = () => {
          this.addToLocalStorage("watchedMovieId");
          Notify.success('Successfully added to Watched!');
@@ -110,7 +110,7 @@ const modalHandler = {
       }
    },
 
-   initToQueue: function () {
+   initAddToQueue: function () {
       queue.onclick = () => {
          this.addToLocalStorage("queueMovieId");
          Notify.success('Successfully added to Queue!');
@@ -118,14 +118,14 @@ const modalHandler = {
       }
    },
 
-   removeWatchedItem: function () {
+   initRemoveWatchedItem: function () {
       removeFromWatchedBtn.onclick = () => {
          this.removeLocalStorageItem("watchedMovieId");
          this.hideWatchedBtn();         
       }
    },
 
-   removeQueueItem: function () {
+   initRemoveQueueItem: function () {
       removeFromQueueBtn.onclick = () => {
          this.removeLocalStorageItem("queueMovieId");
          this.hideQueueBtn();
