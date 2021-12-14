@@ -11,7 +11,7 @@ const userLists = {
             return;
         }
 
-        this.loadInitialMovies();
+        /* this.loadInitialMovies(); */
         this.initWatchedMovies();
         this.initQueueMovies();
     },
