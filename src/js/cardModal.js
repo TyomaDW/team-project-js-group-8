@@ -1,5 +1,6 @@
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import { request } from './moviesApi';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const galleryContainer = document.querySelector(".gallery__list")
 
@@ -23,6 +24,7 @@ const modalHandler = {
       this.initToWached();
       this.initToQueue();
       this.removeWatchedItem();
+      this.removeQueueItem();
    },
 
    initModal: function () {
@@ -68,7 +70,8 @@ const modalHandler = {
             
             modal.style.display = "block"
 
-            this.findMovieId();
+            this.findMovieId("watchedMovieId");
+            this.findMovieId("queueMovieId");
 
             document.addEventListener('keydown', this.closeOnEscape);
          });
@@ -90,12 +93,15 @@ const modalHandler = {
    initToWached: function () {
       wached.onclick = () => {
          this.addToLocalStorage("watchedMovieId");
+         Notify.success('Successfully added to Watched!');
+
       }
    },
 
    initToQueue: function () {
       queue.onclick = () => {
          this.addToLocalStorage("queueMovieId");
+         Notify.success('Successfully added to Queue!');
       }
    },
 
@@ -122,13 +128,14 @@ const modalHandler = {
    removeWatchedItem: function () {
       removeWatchedBtn.onclick = () => {
          this.removeLocalStorageItem("watchedMovieId");
-         
+         this.removeHiddenWatchedBtn();         
       }
    },
 
    removeQueueItem: function () {
       removeQueueBtn.onclick = () => {
          this.removeLocalStorageItem("queueMovieId");
+         this.removeHiddenQueueBtn();
       }
    },
 
@@ -150,17 +157,18 @@ const modalHandler = {
          }
    },
 
-   findMovieId: function () {
-      const localStorageData = JSON.parse(localStorage.getItem("watchedMovieId"));
+   findMovieId: function (key) {
+      const localStorageData = JSON.parse(localStorage.getItem(key));
+
+          if (localStorageData === null) {
+             return;
+          }
          
       const hasMovie = localStorageData.find((movieId) => {
    
-            if (!movieId === this.currentMovieId) {
-               return;
-            } else {
-               console.log(movieId)
-               console.log(this.currentMovieId)
-               console.log('dgsdfgsdf')
+            if (movieId === this.currentMovieId) {
+               this.addHiddenWatchedBtn();
+               this.addHiddenQueueBtn();
             }          
       });
    },
