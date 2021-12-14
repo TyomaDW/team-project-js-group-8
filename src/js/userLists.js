@@ -13,9 +13,7 @@ const userLists = {
 
         /* this.loadInitialMovies(); */
         this.initWatchedMovies();
-        console.log('nkjnkjnk')
         this.initQueueMovies();
-        console.log('djfncfm')
     },
 
     /* loadInitialMovies: function () {
