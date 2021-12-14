@@ -3,13 +3,27 @@ import { refs } from './templates/refs';
 import renderGallery from './templates/createCardMarkup';
 import Notiflix from 'notiflix';
 import VanillaTilt from 'vanilla-tilt';
-const homePage = document.querySelector('#home-page');
-const erasePage = () => {
+import { pagination } from './pagination';
+
+let isSearch = false;
+export const homePage = document.querySelector('#home-page');
+export const erasePage = () => {
   refs.gallery.innerHTML = '';
 };
 
+pagination.on('afterMove', event => {
+  const currentPage = event.page;
+  erasePage();
+  if (!isSearch) {
+    renderMainSection(currentPage);
+  } else {
+    renderMoviesOnQuery(currentPage);
+  }
+});
+
 const submitHandler = e => {
   e.preventDefault();
+  erasePage();
   request.query = refs.searchInput.value.trim();
   if (request.query === '') {
     Notiflix.Notify.info('The query string is empty! Please, enter a title of movie.', {
@@ -27,9 +41,9 @@ if (homePage) {
   refs.searchIcon.addEventListener('click', submitHandler);
 }
 
-export async function renderMoviesOnQuery() {
+export async function renderMoviesOnQuery(page = 1) {
   try {
-    const movies = await request.fetchMoviesOnQuery();
+    const movies = await request.fetchMoviesOnQuery( page );
     const genres = await request.fetchGenres();
     if (movies.length === 0) {
       Notiflix.Notify.failure('Sorry! There are no movies with such title found in database!', {
@@ -50,13 +64,13 @@ export async function renderMoviesOnQuery() {
   }
 }
 
-export async function renderMainSection() {
+export async function renderMainSection(page = 1) {
   if (!refs.homePage) {
     return;
   }
 
   try {
-    const movies = await request.fetchTrendingMovies();
+    const movies = await request.fetchTrendingMovies(page);
     const genres = await request.fetchGenres();
     const genreIds = movies.map(movie => {
       return movie.genre_ids;
