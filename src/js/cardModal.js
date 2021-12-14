@@ -71,7 +71,7 @@ const modalHandler = {
             modalContent.querySelector('.poster picture .medium').srcset = `https://image.tmdb.org/t/p/w300${response.poster_path} 1x`;
             modalContent.querySelector('.poster picture .small').srcset = `https://image.tmdb.org/t/p/w300${response.poster_path} 1x`;
             
-            modal.style.display = "block"
+            modal.style.display = "block";
 
             const hasInWatched = this.findMovieId("watchedMovieId");
             const hasInQueue = this.findMovieId("queueMovieId");
@@ -104,8 +104,8 @@ const modalHandler = {
    initAddToWatched: function () {
       watched.onclick = () => {
          this.addToLocalStorage("watchedMovieId");
-         Notify.success('Successfully added to Watched!');
          this.showInWatchedBtn();
+         Notify.success('The movie successfully added to Watched!');
 
       }
    },
@@ -113,15 +113,17 @@ const modalHandler = {
    initAddToQueue: function () {
       queue.onclick = () => {
          this.addToLocalStorage("queueMovieId");
-         Notify.success('Successfully added to Queue!');
          this.showInQueueBtn();
+         Notify.success('The movie successfully added to Queue!');
       }
    },
 
    initRemoveWatchedItem: function () {
       removeFromWatchedBtn.onclick = () => {
          this.removeLocalStorageItem("watchedMovieId");
-         this.hideWatchedBtn();         
+         this.hideWatchedBtn();
+         Notify.info('The movie successfully removed from Watched');
+
       }
    },
 
@@ -129,6 +131,7 @@ const modalHandler = {
       removeFromQueueBtn.onclick = () => {
          this.removeLocalStorageItem("queueMovieId");
          this.hideQueueBtn();
+         Notify.info('The movie successfully removed from Queue');
       }
    },
 
