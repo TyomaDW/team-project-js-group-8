@@ -1,6 +1,6 @@
 import { request } from './moviesApi'; 
 
-const wachedGalleryBtn = document.querySelector('.watched_list')
+const watchedGalleryBtn = document.querySelector('.watched_list')
 const queueGalleryBtn = document.querySelector('.queue_list')
 const gallery = document.querySelector('.gallery__list');
 const myLibraryPage = document.querySelector('#my-library-page');
@@ -11,28 +11,28 @@ const userLists = {
             return;
         }
 
-        this.loadInitialMovies();
+        /* this.loadInitialMovies(); */
         this.initWatchedMovies();
         this.initQueueMovies();
     },
 
-    loadInitialMovies: function () {
+    /* loadInitialMovies: function () {
         this.resetPage();
         this.fetchMovies("queueMovieId");
-    },
+    }, */
 
     initWatchedMovies: function () {
-        wachedGalleryBtn.onclick = () => {
-            this.removeIsactive(wachedGalleryBtn);
-            this.removeIsactive(queueGalleryBtn);
+        watchedGalleryBtn.onclick = () => {
+            this.removeIsActive(watchedGalleryBtn);
+            this.removeIsActive(queueGalleryBtn);
             this.resetPage();
-            this.fetchMovies("wachedMovieId");  
+            this.fetchMovies("watchedMovieId");  
       }
     },
 
     initQueueMovies: function () {
         queueGalleryBtn.onclick = () => {
-            this.removeIsactive(queueGalleryBtn);
+            this.removeIsActive(queueGalleryBtn);
             this.resetPage();
             this.fetchMovies("queueMovieId");
       }
@@ -61,16 +61,18 @@ const userLists = {
            genresNames.push(genre.name)
         });
 
-        const renderedGenres = genresNames.join(", ");
+        const shortGenresNames = genresNames.slice(0,2)
+
+        const renderedGenres = shortGenresNames.join(", ");
 
         const markup = `<li class="card gallery__item">
                             <a href="#" class="card__link" data-id="${id}">
-                                <div class="card__wraper-img">
+                                <div class="card__wrapper-img">
                                 <img class="card__img" src="https://image.tmdb.org/t/p/w780/${poster_path}" alt="movie's poster">
                                 </div>
-                                <div class="card__wraper">
+                                <div class="card__wrapper">
                                 <h3 class="card__title">${title}</h3>
-                                <p class="card__info"><span class="card__info-genre">${renderedGenres}</span> | <span class="card__info-year">${releaseYear}</span><span class="card__info-vote">${vote_average}</span></p>
+                                <p class="card__info"><span class="card__info-genre">${renderedGenres}...</span> | <span class="card__info-year">${releaseYear}</span><span class="card__info-vote">${vote_average}</span></p>
                                 </div>
                             </a>
                         </li>`;
@@ -83,7 +85,7 @@ const userLists = {
         gallery.innerHTML = "";
     },
 
-    removeIsactive: function (element) {
+    removeIsActive: function (element) {
         if (element.classList.contains('is-active') === true) {
             element.classList.remove('is-active');
         }     
