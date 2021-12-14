@@ -7,14 +7,18 @@ body {
     padding: 0;
 }
 
+.position-up { 
+position: relative;
+}
+
 .arrow-up {
     position: fixed;
-    bottom: 11%;
-    right: 5%;
+    bottom: 45vh;
+    right: 2vw;
     background-color: rgb(32, 32, 32);
     color: rgb(255, 145, 0);
-    width: 60px;
-    height: 60px;
+    width: 30px;
+    height: 30px;
     -webkit-background-size: 300%;
     background-size: 300%;
     display: flex;
@@ -23,6 +27,12 @@ body {
     text-decoration: none;
     font-size: 50px;
     border-radius: 5px;
+
+    @media screen and (min-width: 768px) {
+        right: 1%;
+        width: 60px;
+        height: 60px;
+    }
 }
 
 .arrow-up:hover {
