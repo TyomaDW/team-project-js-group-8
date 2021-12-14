@@ -70,17 +70,22 @@ auth.onAuthStateChanged(identity, user => {
       refs.libraryRef.setAttribute('href', './my-library.html');
     }
 
-    // refs.libraryTrigger.style.display = 'block';
-    refs.signInTrigger.style.display = 'none';
-    refs.signUpTrigger.style.display = 'none';
+    refs.loggedOutItems.forEach(item => {
+      item.style.display = 'none';
+    });
     refs.logoutTrigger.style.display = 'block';
     console.log(signedIn);
   } else {
     console.log('Please sign up or sign in!');
-    // refs.libraryTrigger.style.display = 'none';
-    refs.signInTrigger.style.display = 'block';
-    refs.signUpTrigger.style.display = 'block';
+    refs.loggedOutItems.forEach(item => {
+      item.style.display = 'block';
+    });
     refs.logoutTrigger.style.display = 'none';
+
+    if (homePage) {
+      refs.libraryRef.setAttribute('href', '#');
+    }
+
     refs.libraryRef.addEventListener('click', () => {
       Notiflix.Notify.failure(
         'Access to the library page is allowed only for registered users. Please sign in!',
@@ -101,13 +106,22 @@ signUpForm.addEventListener('submit', e => {
   e.preventDefault();
   const email = signUpForm['sign-up__email'].value;
   const password = signUpForm['sign-up__password'].value;
-  auth.createUserWithEmailAndPassword(identity, email, password).catch(error => console.log(error));
-  refs.signUpModal.style.display = 'none';
-  signUpForm.reset();
-  Notiflix.Notify.success('Your profile was successfully created. Welcome to Filmoteka!', {
-    position: 'top-right',
-    timeout: 3000,
-  });
+  auth
+    .createUserWithEmailAndPassword(identity, email, password)
+    .then(() => {
+      refs.signUpModal.style.display = 'none';
+      signUpForm.reset();
+      Notiflix.Notify.success('Your profile was successfully created. Welcome to Filmoteka!', {
+        position: 'top-right',
+        timeout: 3000,
+      });
+    })
+    .catch(error =>
+      Notiflix.Notify.failure(`${error.message}`, {
+        position: 'top-right',
+        timeout: 3000,
+      }),
+    );
 });
 
 // sign in
@@ -116,20 +130,32 @@ signInForm.addEventListener('submit', e => {
   e.preventDefault();
   const email = signInForm['sign-in__email'].value;
   const password = signInForm['sign-in__password'].value;
-  auth.signInWithEmailAndPassword(identity, email, password).catch(error => console.log(error));
-  refs.signInModal.style.display = 'none';
-  signInForm.reset();
+  auth
+    .signInWithEmailAndPassword(identity, email, password)
+    .then(() => {
+      refs.signInModal.style.display = 'none';
+      signUpForm.reset();
+      Notiflix.Notify.success(`Hello, user with email: ${email}. It's good to see you again!`, {
+        position: 'top-right',
+        timeout: 3000,
+      });
+    })
+    .catch(error =>
+      Notiflix.Notify.failure(`${error.message}`, {
+        position: 'top-right',
+        timeout: 3000,
+      }),
+    );
 });
 
 // log out
 
 refs.logoutTrigger.addEventListener('click', e => {
-  e.preventDefault();
   auth.signOut(identity).then(() => {
-    refs.libraryRef.setAttribute('href', '#');
     Notiflix.Notify.info(`You was successfully logged out.Bye!`, {
       position: 'top-right',
       timeout: 3000,
     });
+    e.preventDefault();
   });
 });

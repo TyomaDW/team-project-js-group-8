@@ -10,13 +10,14 @@ const erasePage = () => {
 
 const submitHandler = e => {
   e.preventDefault();
-  erasePage();
   request.query = refs.searchInput.value.trim();
-  request.query === '' &&
+  if (request.query === '') {
     Notiflix.Notify.info('The query string is empty! Please, enter a title of movie.', {
       position: 'center-center',
       timeout: 3000,
     });
+    return;
+  }
   renderMoviesOnQuery();
   refs.searchForm.reset();
 };
@@ -30,14 +31,17 @@ export async function renderMoviesOnQuery() {
   try {
     const movies = await request.fetchMoviesOnQuery();
     const genres = await request.fetchGenres();
-    movies.length === 0 &&
+    if (movies.length === 0) {
       Notiflix.Notify.failure('Sorry! There are no movies with such title found in database!', {
         position: 'center-center',
         timeout: 3000,
       });
+      return;
+    }
     const genreIds = movies.map(movie => {
       return movie.genre_ids;
     });
+    erasePage();
     renderGallery(movies, genres);
   } catch (error) {
     console.log(error.message);
