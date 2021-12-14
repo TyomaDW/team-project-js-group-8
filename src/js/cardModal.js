@@ -8,8 +8,8 @@ const modal = document.querySelector(".modal")
 const closeBtn = document.querySelector(".close-btn")
 const wached = document.querySelector('.watched')
 const queue = document.querySelector('.queue')
-const removeWatchedBtn = document.querySelector('.remove_watched')
-const removeQueueBtn = document.querySelector('.remove_queue')
+const removeFromWatchedBtn = document.querySelector('.remove_watched')
+const removeFromQueueBtn = document.querySelector('.remove_queue')
 
 
 const modalHandler = {
@@ -55,6 +55,9 @@ const modalHandler = {
             
             Loading.remove();
 
+            this.hideWatchedBtn();
+            this.hideQueueBtn();
+
             const modalContent = document.querySelector('.modal_content');
          
             modalContent.querySelector('.film_title').innerHTML = response.title;
@@ -70,8 +73,16 @@ const modalHandler = {
             
             modal.style.display = "block"
 
-            this.findMovieId("watchedMovieId");
-            this.findMovieId("queueMovieId");
+            const hasInWatched = this.findMovieId("watchedMovieId");
+            const hasInQueue = this.findMovieId("queueMovieId");
+             
+            if (hasInWatched) {
+               this.showInWatchedBtn();
+            } 
+
+            if (hasInQueue) {
+               this.showInQueueBtn();
+            } 
 
             document.addEventListener('keydown', this.closeOnEscape);
          });
@@ -94,6 +105,7 @@ const modalHandler = {
       wached.onclick = () => {
          this.addToLocalStorage("watchedMovieId");
          Notify.success('Successfully added to Watched!');
+         this.showInWatchedBtn();
 
       }
    },
@@ -102,41 +114,46 @@ const modalHandler = {
       queue.onclick = () => {
          this.addToLocalStorage("queueMovieId");
          Notify.success('Successfully added to Queue!');
+         this.showInQueueBtn();
       }
    },
 
-   addHiddenWatchedBtn: function () {
-      wached.classList.add('hidden');
-      removeWatchedBtn.classList.remove('hidden');
-   },
-
-   addHiddenQueueBtn: function () {
-      queue.classList.add('hidden');
-      removeQueueBtn.classList.remove('hidden');
-   },
-
-   removeHiddenWatchedBtn: function () {
-      wached.classList.remove('hidden');
-      removeWatchedBtn.classList.add('hidden');
-   },
-
-   removeHiddenQueueBtn: function () {
-      queue.classList.remove('hidden');
-      removeQueueBtn.classList.add('hidden');
-   },
-
    removeWatchedItem: function () {
-      removeWatchedBtn.onclick = () => {
+      removeFromWatchedBtn.onclick = () => {
          this.removeLocalStorageItem("watchedMovieId");
-         this.removeHiddenWatchedBtn();         
+         this.hideWatchedBtn();         
       }
    },
 
    removeQueueItem: function () {
-      removeQueueBtn.onclick = () => {
+      removeFromQueueBtn.onclick = () => {
          this.removeLocalStorageItem("queueMovieId");
-         this.removeHiddenQueueBtn();
+         this.hideQueueBtn();
       }
+   },
+
+   showInWatchedBtn: function () {
+      wached.classList.add('hidden');
+      removeFromWatchedBtn.classList.remove('hidden');
+      removeFromWatchedBtn.classList.add('is-active');
+   },
+
+   showInQueueBtn: function () {
+      queue.classList.add('hidden');
+      removeFromQueueBtn.classList.remove('hidden');
+      removeFromQueueBtn.classList.add('is-active');
+   },
+
+   hideWatchedBtn: function () {
+      wached.classList.remove('hidden');
+      removeFromWatchedBtn.classList.add('hidden');
+      removeFromWatchedBtn.classList.remove('is-active');
+   },
+
+   hideQueueBtn: function () {
+      queue.classList.remove('hidden');
+      removeFromQueueBtn.classList.add('hidden');
+      removeFromQueueBtn.classList.remove('is-active');
    },
 
    addToLocalStorage: function (key) {
@@ -164,12 +181,8 @@ const modalHandler = {
              return;
           }
          
-      const hasMovie = localStorageData.find((movieId) => {
-   
-            if (movieId === this.currentMovieId) {
-               this.addHiddenWatchedBtn();
-               this.addHiddenQueueBtn();
-            }          
+      return localStorageData.find((movieId) => {
+            return movieId === this.currentMovieId;                 
       });
    },
 

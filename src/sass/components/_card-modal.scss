@@ -236,3 +236,9 @@ ul {
   display: none;
 }
 
+.is-active {
+  color: var(--modal-bg-color);
+  background-color: var(--active-color);
+  outline: none;
+}
+
