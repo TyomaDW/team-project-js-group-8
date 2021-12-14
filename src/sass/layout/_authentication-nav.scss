@@ -1,3 +1,6 @@
+.auth {
+  padding-top: 30px;
+}
 .auth__nav-list {
   display: flex;
   justify-content: flex-end;
@@ -10,11 +13,14 @@
 .auth__nav-link {
   padding: 10px 0px;
   color: var(--header-text-color);
-  &:hover {
-    border-radius: 20%;
-    background-color: rgba($color: #f5efefc0, $alpha: 0.3);
+  &:hover,
+  &:focus {
     color: #000000;
-    cursor: pointer;
+    border-radius: 20%;
+    background-color: var(--active-btn-color);
+    box-shadow: (0px 8px 43px rgba(255, 107, 1, 0.6));
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+      border 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
   font-weight: 500;
   font-size: 12px;

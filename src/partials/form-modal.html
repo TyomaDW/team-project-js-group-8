@@ -1,4 +1,4 @@
-<div id="sign-up" class="backdrop">
+<div id="sign-up" class="backdrop is-hidden">
   <form id="sign-up__form" class="flex-container" action="">
     <label class="label" for="sign-up__email"></label>
     <input type="email" class="input" id="sign-up__email" placeholder="Enter email" required />
@@ -15,11 +15,16 @@
     />
 
     <button type="submit" class="form-button">Sign Up!</button>
-    <span class="sign-up__close"><a class="close-symbol" href="#">x</a></span>
+    <span class="sign-up__close"
+      ><a href="#"
+        ><svg class="close-symbol" width="32" height="32">
+          <use href="./img/header/symbol-defs.svg#icon-close"></use></svg
+      ></a>
+    </span>
   </form>
 </div>
 
-<div id="sign-in" class="backdrop">
+<div id="sign-in" class="backdrop is-hidden">
   <form id="sign-in__form" class="flex-container" action="">
     <label class="label" for="sign-in__email"></label>
     <input type="email" class="input" id="sign-in__email" placeholder="Enter email" required />
@@ -36,6 +41,11 @@
     />
 
     <button type="submit" class="form-button">Sign In!</button>
-    <span class="sign-in__close"><a class="close-symbol" href="#">x</a></span>
+    <span class="sign-in__close"
+      ><a href="#"
+        ><svg class="close-symbol" width="32" height="32">
+          <use href="./img/header/symbol-defs.svg#icon-close"></use></svg
+      ></a>
+    </span>
   </form>
 </div>
