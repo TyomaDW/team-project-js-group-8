@@ -43,6 +43,8 @@ export async function renderMoviesOnQuery() {
     });
     erasePage();
     renderGallery(movies, genres);
+    const element = document.querySelectorAll('.card');
+    VanillaTilt.init(element);
   } catch (error) {
     console.log(error.message);
   }
