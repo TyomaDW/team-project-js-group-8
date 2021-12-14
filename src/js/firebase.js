@@ -31,7 +31,7 @@ refs.loginTrigger.addEventListener('click', () => {
     });
     return;
   }
-  refs.signInModal.style.display = 'block';
+  refs.signInModal.classList.remove('is-hidden');
 });
 refs.signUpTrigger.addEventListener('click', () => {
   if (signedIn) {
@@ -41,13 +41,13 @@ refs.signUpTrigger.addEventListener('click', () => {
     });
     return;
   }
-  refs.signUpModal.style.display = 'block';
+  refs.signUpModal.classList.remove('is-hidden');
 });
 refs.signInClose.addEventListener('click', () => {
-  refs.signInModal.style.display = 'none';
+  refs.signInModal.classList.add('is-hidden');
 });
 refs.signUpClose.addEventListener('click', () => {
-  refs.signUpModal.style.display = 'none';
+  refs.signUpModal.classList.add('is-hidden');
 });
 
 // Initialize Firebase and firestore
@@ -74,6 +74,7 @@ auth.onAuthStateChanged(identity, user => {
       item.style.display = 'none';
     });
     refs.logoutTrigger.style.display = 'block';
+
     console.log(signedIn);
   } else {
     console.log('Please sign up or sign in!');
