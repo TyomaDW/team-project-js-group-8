@@ -11,6 +11,7 @@ export const refs = {
   authNav: document.querySelector('.auth__nav-list'),
   libraryTrigger: document.querySelector('#library-trigger'),
   libraryRef: document.querySelector('#onlyForRegistered'),
+  loggedOutItems: document.querySelectorAll('.logged-out'),
 };
 const headerHeight = document.querySelector('.header').clientHeight;
 const formWrapper = document.querySelectorAll('.flex-container');
