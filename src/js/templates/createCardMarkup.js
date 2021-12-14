@@ -13,10 +13,10 @@ export default function renderGallery(movies, genres) {
       if (poster_path === null) {
         return `<li class="card gallery__item">
           <a href="#" class="card__link" data-id="${id}">
-            <div class="card__wraper-img">
+            <div class="card__wrapper-img">
               <img class="card__img" src="https://via.placeholder.com/280x420.png?text=Image+Not+Available" alt="absence of movie's poster">
             </div>
-            <div class="card__wraper">
+            <div class="card__wrapper">
               <h3 class="card__title">${title}</h3>
               <p class="card__info"><span class="card__info-genre">${cardMatchedId}</span> | <span class="card__info-year">${releaseYear}</span></p>
             </div>
@@ -25,10 +25,10 @@ export default function renderGallery(movies, genres) {
       }
       return `<li class="card gallery__item">
         <a href="#" class="card__link" data-id="${id}">
-          <div class="card__wraper-img">
+          <div class="card__wrapper-img">
             <img class="card__img" src="https://image.tmdb.org/t/p/w780/${poster_path}" alt="movie's poster">
           </div>
-          <div class="card__wraper">
+          <div class="card__wrapper">
             <h3 class="card__title">${title}</h3>
             <p class="card__info"><span class="card__info-genre">${cardMatchedId}</span> | <span class="card__info-year">${releaseYear}</span></p>
           </div>
