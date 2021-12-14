@@ -6,7 +6,7 @@ const galleryContainer = document.querySelector(".gallery__list")
 
 const modal = document.querySelector(".modal")
 const closeBtn = document.querySelector(".close-btn")
-const wached = document.querySelector('.watched')
+const watched = document.querySelector('.watched')
 const queue = document.querySelector('.queue')
 const removeFromWatchedBtn = document.querySelector('.remove_watched')
 const removeFromQueueBtn = document.querySelector('.remove_queue')
@@ -21,7 +21,7 @@ const modalHandler = {
          return;
       }
       this.initModal();
-      this.initAddToWached();
+      this.initAddToWatched();
       this.initAddToQueue();
       this.initRemoveWatchedItem();
       this.initRemoveQueueItem();
@@ -101,8 +101,8 @@ const modalHandler = {
       }
    },
 
-   initAddToWached: function () {
-      wached.onclick = () => {
+   initAddToWatched: function () {
+      watched.onclick = () => {
          this.addToLocalStorage("watchedMovieId");
          Notify.success('Successfully added to Watched!');
          this.showInWatchedBtn();
@@ -133,7 +133,7 @@ const modalHandler = {
    },
 
    showInWatchedBtn: function () {
-      wached.classList.add('hidden');
+      watched.classList.add('hidden');
       removeFromWatchedBtn.classList.remove('hidden');
       removeFromWatchedBtn.classList.add('is-active');
    },
@@ -145,7 +145,7 @@ const modalHandler = {
    },
 
    hideWatchedBtn: function () {
-      wached.classList.remove('hidden');
+      watched.classList.remove('hidden');
       removeFromWatchedBtn.classList.add('hidden');
       removeFromWatchedBtn.classList.remove('is-active');
    },
