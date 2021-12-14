@@ -5,6 +5,7 @@ import './js/footer_modal';
 import './js/renderHomeGallery';
 import './js/renderLibraryLists';
 import './js/templates/spinner';
+import './js/templates/button-to-top';
 import './js/userLists';
 import './js/authForm';
 import './js/firebase';
