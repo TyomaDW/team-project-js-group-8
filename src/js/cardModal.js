@@ -1,12 +1,15 @@
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import { request } from './moviesApi';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const galleryContainer = document.querySelector(".gallery__list")
 
 const modal = document.querySelector(".modal")
 const closeBtn = document.querySelector(".close-btn")
-const wached = document.querySelector('.wached')
+const watched = document.querySelector('.watched')
 const queue = document.querySelector('.queue')
+const removeFromWatchedBtn = document.querySelector('.remove_watched')
+const removeFromQueueBtn = document.querySelector('.remove_queue')
 
 
 const modalHandler = {
@@ -18,8 +21,10 @@ const modalHandler = {
          return;
       }
       this.initModal();
-      this.initToWached();
-      this.initToQueue();
+      this.initAddToWatched();
+      this.initAddToQueue();
+      this.initRemoveWatchedItem();
+      this.initRemoveQueueItem();
    },
 
    initModal: function () {
@@ -50,6 +55,9 @@ const modalHandler = {
             
             Loading.remove();
 
+            this.hideWatchedBtn();
+            this.hideQueueBtn();
+
             const modalContent = document.querySelector('.modal_content');
          
             modalContent.querySelector('.film_title').innerHTML = response.title;
@@ -63,7 +71,18 @@ const modalHandler = {
             modalContent.querySelector('.poster picture .medium').srcset = `https://image.tmdb.org/t/p/w300${response.poster_path} 1x`;
             modalContent.querySelector('.poster picture .small').srcset = `https://image.tmdb.org/t/p/w300${response.poster_path} 1x`;
             
-            modal.style.display = "block"
+            modal.style.display = "block";
+
+            const hasInWatched = this.findMovieId("watchedMovieId");
+            const hasInQueue = this.findMovieId("queueMovieId");
+             
+            if (hasInWatched) {
+               this.showInWatchedBtn();
+            } 
+
+            if (hasInQueue) {
+               this.showInQueueBtn();
+            } 
 
             document.addEventListener('keydown', this.closeOnEscape);
          });
@@ -82,16 +101,62 @@ const modalHandler = {
       }
    },
 
-   initToWached: function () {
-      wached.onclick = () => {
-         this.addToLocalStorage("wachedMovieId");
+   initAddToWatched: function () {
+      watched.onclick = () => {
+         this.addToLocalStorage("watchedMovieId");
+         this.showInWatchedBtn();
+         Notify.success('The movie successfully added to Watched!');
+
       }
    },
 
-   initToQueue: function () {
+   initAddToQueue: function () {
       queue.onclick = () => {
          this.addToLocalStorage("queueMovieId");
+         this.showInQueueBtn();
+         Notify.success('The movie successfully added to Queue!');
       }
+   },
+
+   initRemoveWatchedItem: function () {
+      removeFromWatchedBtn.onclick = () => {
+         this.removeLocalStorageItem("watchedMovieId");
+         this.hideWatchedBtn();
+         Notify.info('The movie successfully removed from Watched');
+
+      }
+   },
+
+   initRemoveQueueItem: function () {
+      removeFromQueueBtn.onclick = () => {
+         this.removeLocalStorageItem("queueMovieId");
+         this.hideQueueBtn();
+         Notify.info('The movie successfully removed from Queue');
+      }
+   },
+
+   showInWatchedBtn: function () {
+      watched.classList.add('hidden');
+      removeFromWatchedBtn.classList.remove('hidden');
+      removeFromWatchedBtn.classList.add('is-active');
+   },
+
+   showInQueueBtn: function () {
+      queue.classList.add('hidden');
+      removeFromQueueBtn.classList.remove('hidden');
+      removeFromQueueBtn.classList.add('is-active');
+   },
+
+   hideWatchedBtn: function () {
+      watched.classList.remove('hidden');
+      removeFromWatchedBtn.classList.add('hidden');
+      removeFromWatchedBtn.classList.remove('is-active');
+   },
+
+   hideQueueBtn: function () {
+      queue.classList.remove('hidden');
+      removeFromQueueBtn.classList.add('hidden');
+      removeFromQueueBtn.classList.remove('is-active');
    },
 
    addToLocalStorage: function (key) {
@@ -110,8 +175,34 @@ const modalHandler = {
                localStorage.setItem(key, JSON.stringify(moviesIdsSaved));
             }        
          }
+   },
+
+   findMovieId: function (key) {
+      const localStorageData = JSON.parse(localStorage.getItem(key));
+
+          if (localStorageData === null) {
+             return;
+          }
+         
+      return localStorageData.find((movieId) => {
+            return movieId === this.currentMovieId;                 
+      });
+   },
+
+   removeLocalStorageItem: function (key) {
+      const localStorageData = JSON.parse(localStorage.getItem(key));
+         
+      const hasMovie = localStorageData.find((movieId) => {
+            return movieId === this.currentMovieId; 
+      });
+
+      const indexId = localStorageData.indexOf(hasMovie); 
+      localStorageData.splice(indexId, 1);
+
+      localStorage.setItem(key, JSON.stringify(localStorageData));
    }
-}
+
+   }
 
 modalHandler.init();
 
