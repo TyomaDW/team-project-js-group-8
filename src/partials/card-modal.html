@@ -1,39 +1,63 @@
 <div class="modal">
-    <div class="modal_wrapper">
-           <button type="button" class="close-btn">
-              <svg class="close-btn__icon">
-                  <use href="./images/card-modal/sprite.svg#icon-cross"></use>
-              </svg>
-           </button>
-        <div class="modal_content">
-             <div class="poster">
-                <picture>
-                    <source media="(min-width: 1024px)"
-                        srcset="./images/card-modal/photo_1024.jpg 1x" class="large">
-                    <source media="(min-width: 768px)"
-                        srcset="./images/card-modal/photo_768.jpg 1x" class="medium"> 
-                    <source media="(min-width: 320px)"
-                        srcset="./images/card-modal/photo_320.jpg 1x" class="small">
-                    <img src="./images/card-modal/photo_1024.jpg" alt="movie's poster">
-                </picture>
-             </div>
-             <div class="content">
-                <h2 class="film_title"></h2>
-                    <div class="title-position">
-                       <ul class="title_list_position">
-                            <li class="title_item"><span class="title_list_value a">Vote / Votes</span><span class="contents_value"><span class="highlight vote_average"></span> / <span class="highlight_all vote_count"></span></span></li>
-                            <li class="title_item"><span class="title_list_value b">Popularity</span><span class="contents_value popularity"></span></li>
-                            <li class="title_item"><span class="title_list_value c">Original Title</span><span class="contents_value original_title"></span></li>
-                            <li class="title_item"><span class="title_list_value d">Genre</span><span class="contents_value genres"></span></li>
-                       </ul>                  
-                    </div>
-                      <h3 class="description_title">About</h3>
-                      <p class="description"></p>
-                    <button class="modal_card_btn watched">ADD TO WATCHED</button>
-                    <button class="remove_watched hidden">REMOVE WATCHED</button>
-                    <button class="modal_card_btn queue">ADD TO QUEUE</button>
-                    <button class="remove_queue hidden">REMOVE QUEUE</button>
-             </div>
+  <div class="modal_wrapper">
+    <button type="button" class="close-btn">
+      <svg class="close-btn__icon">
+        <use href="./images/card-modal/sprite.svg#icon-cross"></use>
+      </svg>
+    </button>
+    <div class="modal_content">
+      <div class="poster">
+        <picture>
+          <source
+            media="(min-width: 1024px)"
+            srcset="./images/card-modal/photo_1024.jpg 1x"
+            class="large"
+          />
+          <source
+            media="(min-width: 768px)"
+            srcset="./images/card-modal/photo_768.jpg 1x"
+            class="medium"
+          />
+          <source
+            media="(min-width: 320px)"
+            srcset="./images/card-modal/photo_320.jpg 1x"
+            class="small"
+          />
+          <img src="./images/card-modal/photo_1024.jpg" alt="movie's poster" />
+        </picture>
+      </div>
+      <div class="content">
+        <h2 class="film_title visually-hidden">Movie information</h2>
+        <div class="title-position">
+          <ul class="title_list_position">
+            <li class="title_item">
+              <span class="title_list_value a">Vote / Votes</span
+              ><span class="contents_value"
+                ><span class="highlight vote_average"></span> /
+                <span class="highlight_all vote_count"></span
+              ></span>
+            </li>
+            <li class="title_item">
+              <span class="title_list_value b">Popularity</span
+              ><span class="contents_value popularity"></span>
+            </li>
+            <li class="title_item">
+              <span class="title_list_value c">Original Title</span
+              ><span class="contents_value original_title"></span>
+            </li>
+            <li class="title_item">
+              <span class="title_list_value d">Genre</span
+              ><span class="contents_value genres"></span>
+            </li>
+          </ul>
         </div>
+        <h3 class="description_title">About</h3>
+        <p class="description"></p>
+        <button class="modal_card_btn watched">ADD TO WATCHED</button>
+        <button class="remove_watched hidden">REMOVE WATCHED</button>
+        <button class="modal_card_btn queue">ADD TO QUEUE</button>
+        <button class="remove_queue hidden">REMOVE QUEUE</button>
+      </div>
     </div>
+  </div>
 </div>
