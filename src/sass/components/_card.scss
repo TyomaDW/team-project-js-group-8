@@ -19,7 +19,7 @@
   display: inline-block;
   width: 100%;
   text-decoration: none;
-  color: #000000;
+  color: inherit;
 
   &:hover,
   &:focus {
@@ -44,7 +44,7 @@
 }
 .card__title {
   font-size: inherit;
-  color: #000000;
+  color: inherit;
   text-transform: uppercase;
 }
 .card__info {
