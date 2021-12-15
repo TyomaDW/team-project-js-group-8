@@ -1,73 +1,72 @@
-import { request } from './moviesApi'; 
+import { request } from './moviesApi';
 
-const watchedGalleryBtn = document.querySelector('.watched_list')
-const queueGalleryBtn = document.querySelector('.queue_list')
+const watchedGalleryBtn = document.querySelector('.watched_list');
+const queueGalleryBtn = document.querySelector('.queue_list');
 const gallery = document.querySelector('.gallery__list');
 const myLibraryPage = document.querySelector('#my-library-page');
 import { pagination } from './pagination';
 
 const userLists = {
-    init: function () {
-        if (!myLibraryPage) {
-            return;
-        }
+  init: function () {
+    if (!myLibraryPage) {
+      return;
+    }
 
-        /* this.loadInitialMovies(); */
-        this.initWatchedMovies();
-        this.initQueueMovies();
-    },
+    /* this.loadInitialMovies(); */
+    this.initWatchedMovies();
+    this.initQueueMovies();
+  },
 
-    /* loadInitialMovies: function () {
+  /* loadInitialMovies: function () {
         this.resetPage();
         this.fetchMovies("queueMovieId");
     }, */
 
-    initWatchedMovies: function () {
-        watchedGalleryBtn.onclick = () => {
-            this.removeIsActive(watchedGalleryBtn);
-            this.removeIsActive(queueGalleryBtn);
-            this.resetPage();
-            this.fetchMovies("watchedMovieId");  
-      }
-    },
+  initWatchedMovies: function () {
+    watchedGalleryBtn.onclick = () => {
+      this.removeIsActive(watchedGalleryBtn);
+      this.removeIsActive(queueGalleryBtn);
+      this.resetPage();
+      this.fetchMovies('watchedMovieId');
+    };
+  },
 
-    initQueueMovies: function () {
-        queueGalleryBtn.onclick = () => {
-            this.removeIsActive(queueGalleryBtn);
-            this.resetPage();
-            this.fetchMovies("queueMovieId");
-      }
-    },
+  initQueueMovies: function () {
+    queueGalleryBtn.onclick = () => {
+      this.removeIsActive(queueGalleryBtn);
+      this.resetPage();
+      this.fetchMovies('queueMovieId');
+    };
+  },
 
-    fetchMovies: function (storageKey) {
-        const moviesIds = JSON.parse(localStorage.getItem(storageKey));
-           
-        if (!moviesIds) {
-            pagination.reset(0);
-            return;
-          }
-          
-          moviesIds.forEach(movieId => {
-              request.fetchMovieDetails(movieId).then((data) => {
-                this.renderMovie(data);
-              })
-          });
-    },
-    
-    renderMovie: function ({ id, genres, title, release_date, poster_path, vote_average }) {
-          
-        let genresNames = [];
-        let releaseYear = release_date.slice(0, 4);
-        
-        genres.forEach(genre => {
-           genresNames.push(genre.name)
-        });
+  fetchMovies: function (storageKey) {
+    const moviesIds = JSON.parse(localStorage.getItem(storageKey));
 
-        const shortGenresNames = genresNames.slice(0,2)
+    if (!moviesIds) {
+      pagination.reset(0);
+      return;
+    }
 
-        const renderedGenres = shortGenresNames.join(", ");
+    moviesIds.forEach(movieId => {
+      request.fetchMovieDetails(movieId).then(data => {
+        this.renderMovie(data);
+      });
+    });
+  },
 
-        const markup = `<li class="card gallery__item">
+  renderMovie: function ({ id, genres, title, release_date, poster_path, vote_average }) {
+    let genresNames = [];
+    let releaseYear = release_date.slice(0, 4);
+
+    genres.forEach(genre => {
+      genresNames.push(genre.name);
+    });
+
+    const shortGenresNames = genresNames.slice(0, 2);
+
+    const renderedGenres = shortGenresNames.join(', ');
+
+    const markup = `<li class="card gallery__item">
                             <a href="#" class="card__link" data-id="${id}">
                                 <div class="card__wrapper-img">
                                 <img class="card__img" src="https://image.tmdb.org/t/p/w780/${poster_path}" alt="movie's poster">
@@ -78,21 +77,22 @@ const userLists = {
                                 </div>
                             </a>
                         </li>`;
-                        
-        
-        gallery.insertAdjacentHTML('beforeend', markup);
-    },
 
-    resetPage: function () {
-        gallery.innerHTML = "";
-    },
+    gallery.insertAdjacentHTML('beforeend', markup);
+    const element = document.querySelectorAll('.card');
+    VanillaTilt.init(element);
+  },
 
-    removeIsActive: function (element) {
-        if (element.classList.contains('is-active') === true) {
-            element.classList.remove('is-active');
-        }     
+  resetPage: function () {
+    gallery.innerHTML = '';
+  },
+
+  removeIsActive: function (element) {
+    if (element.classList.contains('is-active') === true) {
+      element.classList.remove('is-active');
     }
-}
+  },
+};
 
 userLists.init();
 
