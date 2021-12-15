@@ -10,11 +10,13 @@ footerRefs.closeModalBtnFooter.addEventListener('click', closeModalFooter);
 
 export function openModalFooter(e) {
     e.preventDefault();
-    footerRefs.modalFooter.classList.remove(footerRefs.isHidden);
+  footerRefs.modalFooter.classList.remove(footerRefs.isHidden);
+  document.body.classList.add('no-scroll');
 }
 
 export function closeModalFooter() {
-  footerRefs.modalFooter.classList.add(footerRefs.isHidden);  
+  footerRefs.modalFooter.classList.add(footerRefs.isHidden);
+   document.body.classList.remove('no-scroll');
 }
 
 window.addEventListener('keydown', onEscKey);
@@ -23,6 +25,7 @@ export function onEscKey(e) {
   if (e.code === 'Escape') {
     footerRefs.modalFooter.classList.add(footerRefs.isHidden);
   }
+  document.body.classList.remove('no-scroll');
 }
 
 footerRefs.modalFooter.addEventListener('click', onClickMouse);
@@ -33,4 +36,5 @@ export function onClickMouse(e) {
   if (backdrop === footerRefs.modalFooter) {
     footerRefs.modalFooter.classList.add(footerRefs.isHidden);
   }
+  document.body.classList.remove('no-scroll');
 }
