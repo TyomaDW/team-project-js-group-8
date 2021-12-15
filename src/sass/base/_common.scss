@@ -6,12 +6,17 @@ body {
 body {
   font-family: 'Roboto', sans-serif;
   letter-spacing: 0.03em;
-  background-color: #ffffff;
+  background-color: #faf9dd;
   color: #000000;
+  display: grid;
+  height: 100%;
 }
 
 main {
-  flex: 1 1 auto;
+  display: grid;
+  align-content: space-between;
+  height: 100%;
+  align-items: end;
 }
 
 img {
