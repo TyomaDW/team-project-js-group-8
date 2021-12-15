@@ -49,6 +49,12 @@ refs.signInClose.addEventListener('click', () => {
 refs.signUpClose.addEventListener('click', () => {
   refs.signUpModal.classList.add('is-hidden');
 });
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    refs.signUpModal.classList.add('is-hidden');
+    refs.signInModal.classList.add('is-hidden');
+  }
+});
 
 // Initialize Firebase and firestore
 const app = initializeApp(firebaseConfig);
@@ -73,6 +79,7 @@ auth.onAuthStateChanged(identity, user => {
     refs.loggedOutItems.forEach(item => {
       item.style.display = 'none';
     });
+    refs.hiddenItem.style.display = 'block';
     refs.logoutTrigger.style.display = 'block';
 
     console.log(signedIn);
@@ -81,8 +88,8 @@ auth.onAuthStateChanged(identity, user => {
     refs.loggedOutItems.forEach(item => {
       item.style.display = 'block';
     });
+    refs.hiddenItem.style.display = 'none';
     refs.logoutTrigger.style.display = 'none';
-
     if (homePage) {
       refs.libraryRef.setAttribute('href', '#');
     }

@@ -58,7 +58,7 @@
   cursor: pointer;
   fill: #ffffff;
   stroke: #000000;
-  background-color: #000000;
+  background-color: var(--active-btn-color);
   &:hover,
   &:focus {
     border-radius: 50%;
