@@ -1,19 +1,14 @@
 .header {
-  // min-height: 230px;
-  padding-top: 45px;
   color: var(--header-txt-color);
-  background-color: var(--gradient-bg-color);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-
-  @media screen and (min-width: 1024px) {
-    width: 1024px;
-    margin: 0 auto;
-  }
+  background-color: rgb(10, 6, 6);
 }
 
 .header--home {
+  max-width: 1024px;
+  margin: 0 auto;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   background-image: linear-gradient(var(--gradient-bg-color), var(--gradient-bg-color)),
     url(../img/header/mobile/header-bcg-mobile.jpg);
 
@@ -46,6 +41,11 @@
 }
 
 .header--library {
+  max-width: 1024px;
+  margin: 0 auto;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   background-image: linear-gradient(var(--gradient-bg-color), var(--gradient-bg-color)),
     url(../img/header/mobile/header-lib-bcg-mobile.jpg);
 
@@ -85,6 +85,7 @@
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: baseline;
+  padding-top: 45px;
   margin-bottom: 45px;
 }
 

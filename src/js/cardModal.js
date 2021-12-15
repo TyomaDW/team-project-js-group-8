@@ -123,7 +123,6 @@ const modalHandler = {
          this.removeLocalStorageItem("watchedMovieId");
          this.hideWatchedBtn();
          Notify.info('The movie successfully removed from Watched');
-
       }
    },
 

@@ -1,62 +1,64 @@
-<header class="header header--library">
-  <div class="container">
-    <div class="flex-wrapper">
-      <div class="logo">
-        <a href="./index.html" class="logo__link">
-          <svg class="logo__icon" width="24" height="24">
-            <use href="./img/header/symbol-defs.svg#icon-film"></use>
-          </svg>
-          <span class="app-name">Filmoteka</span>
-        </a>
+<header class="header">
+  <div class="header--library">
+    <div class="container">
+      <div class="flex-wrapper">
+        <div class="logo">
+          <a href="./index.html" class="logo__link">
+            <svg class="logo__icon" width="24" height="24">
+              <use href="./img/header/symbol-defs.svg#icon-film"></use>
+            </svg>
+            <span class="app-name">Filmoteka</span>
+          </a>
+        </div>
+        <nav class="nav" id="library-trigger">
+          <ul class="nav__list">
+            <li class="nav__item">
+              <a href="./index.html" class="nav__link">HOME</a>
+            </li>
+            <li class="nav__item">
+              <a href="./my-library.html" id="library" class="nav__link nav__link--current"
+                >MY LIBRARY</a
+              >
+            </li>
+          </ul>
+        </nav>
       </div>
-      <nav class="nav" id="library-trigger">
-        <ul class="nav__list">
-          <li class="nav__item">
-            <a href="./index.html" class="nav__link">HOME</a>
-          </li>
-          <li class="nav__item">
-            <a href="./my-library.html" id="library" class="nav__link nav__link--current"
-              >MY LIBRARY</a
-            >
-          </li>
-        </ul>
-      </nav>
+      <h1 class="visually-hidden">MY LIBRARY</h1>
+      <ul class="filter__list">
+        <li class="filter__item">
+          <button class="filter__btn watched_list" type="button">Watched</button>
+        </li>
+        <li class="filter__item">
+          <button class="filter__btn is-active queue_list" type="button">Queue</button>
+        </li>
+      </ul>
+      <section class="auth">
+        <div class="auth__wrapper">
+          <ul class="auth__nav-list">
+            <li class="auth__nav-item">
+              <a
+                href="#"
+                id="login-trigger"
+                class="auth__nav-link logged-out"
+                data-target="modal-login"
+                >Sign In</a
+              >
+            </li>
+            <li class="auth__nav-item">
+              <a
+                href="#"
+                id="sign-up-trigger"
+                class="auth__nav-link logged-out"
+                data-target="modal-create"
+                >Sign Up</a
+              >
+            </li>
+            <li class="auth__nav-item">
+              <a href="./index.html" id="logout-trigger" class="auth__nav-link">Log Out</a>
+            </li>
+          </ul>
+        </div>
+      </section>
     </div>
-    <h1 class="visually-hidden">MY LIBRARY</h1>
-    <ul class="filter__list">
-      <li class="filter__item">
-        <button class="filter__btn watched_list" type="button">Watched</button>
-      </li>
-      <li class="filter__item">
-        <button class="filter__btn is-active queue_list" type="button">Queue</button>
-      </li>
-    </ul>
-    <section class="auth">
-      <div class="auth__wrapper">
-        <ul class="auth__nav-list">
-          <li class="auth__nav-item">
-            <a
-              href="#"
-              id="login-trigger"
-              class="auth__nav-link logged-out"
-              data-target="modal-login"
-              >Sign In</a
-            >
-          </li>
-          <li class="auth__nav-item">
-            <a
-              href="#"
-              id="sign-up-trigger"
-              class="auth__nav-link logged-out"
-              data-target="modal-create"
-              >Sign Up</a
-            >
-          </li>
-          <li class="auth__nav-item">
-            <a href="./index.html" id="logout-trigger" class="auth__nav-link">Log Out</a>
-          </li>
-        </ul>
-      </div>
-    </section>
   </div>
 </header>
