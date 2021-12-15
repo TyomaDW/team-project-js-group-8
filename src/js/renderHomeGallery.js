@@ -24,7 +24,6 @@ pagination.on('afterMove', event => {
 
 const submitHandler = e => {
   e.preventDefault();
-  erasePage();
   request.query = refs.searchInput.value.trim();
   if (request.query === '') {
     Notiflix.Notify.info('The query string is empty! Please, enter a title of movie.', {
@@ -44,7 +43,7 @@ if (homePage) {
 
 export async function renderMoviesOnQuery(page = 1) {
   try {
-    const movies = await request.fetchMoviesOnQuery( page );
+    const movies = await request.fetchMoviesOnQuery(page);
     const genres = await request.fetchGenres();
     if (movies.length === 0) {
       Notiflix.Notify.failure('Sorry! There are no movies with such title found in database!', {
