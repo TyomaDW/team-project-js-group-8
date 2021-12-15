@@ -1,6 +1,7 @@
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import { request } from './moviesApi';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { signedIn } from './firebase';
 
 const galleryContainer = document.querySelector(".gallery__list")
 
@@ -58,6 +59,11 @@ const modalHandler = {
             this.hideWatchedBtn();
             this.hideQueueBtn();
 
+            /* if (signedIn === false) {
+               watched.disabled = true;
+               queue.disabled = true;
+            } */
+
             const modalContent = document.querySelector('.modal_content');
          
             modalContent.querySelector('.film_title').innerHTML = response.title;
@@ -103,6 +109,10 @@ const modalHandler = {
 
    initAddToWatched: function () {
       watched.onclick = () => {
+         if (signedIn === false) {
+            Notify.info('This option is only available to authorized users!');
+            return;
+         }
          this.addToLocalStorage("watchedMovieId");
          this.showInWatchedBtn();
          Notify.success('The movie successfully added to Watched!');
@@ -112,6 +122,10 @@ const modalHandler = {
 
    initAddToQueue: function () {
       queue.onclick = () => {
+         if (signedIn === false) {
+            Notify.info('This option is only available to authorized users!');
+            return;
+         }
          this.addToLocalStorage("queueMovieId");
          this.showInQueueBtn();
          Notify.success('The movie successfully added to Queue!');
