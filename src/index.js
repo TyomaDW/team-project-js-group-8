@@ -2,6 +2,7 @@ import './js/cardModal';
 import { refs, renderGallery } from './js/renderHomeGallery';
 import './js/footer_modal';
 
+import './js/templates/light-dark-theme'
 import './js/renderHomeGallery';
 import './js/renderLibraryLists';
 import './js/templates/spinner';
