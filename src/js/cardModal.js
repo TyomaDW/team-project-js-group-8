@@ -59,11 +59,6 @@ const modalHandler = {
             this.hideWatchedBtn();
             this.hideQueueBtn();
 
-            /* if (signedIn === false) {
-               watched.disabled = true;
-               queue.disabled = true;
-            } */
-
             const modalContent = document.querySelector('.modal_content');
          
             modalContent.querySelector('.film_title').innerHTML = response.title;
@@ -110,7 +105,7 @@ const modalHandler = {
    initAddToWatched: function () {
       watched.onclick = () => {
          if (signedIn === false) {
-            Notify.info('This option is only available to authorized users!');
+            Notify.info('This option is only available to authorized users! Sing up, please!');
             return;
          }
          this.addToLocalStorage("watchedMovieId");
@@ -123,7 +118,7 @@ const modalHandler = {
    initAddToQueue: function () {
       queue.onclick = () => {
          if (signedIn === false) {
-            Notify.info('This option is only available to authorized users!');
+            Notify.info('This option is only available to authorized users! Sing up, please!');
             return;
          }
          this.addToLocalStorage("queueMovieId");
