@@ -4,6 +4,7 @@ const watchedGalleryBtn = document.querySelector('.watched_list')
 const queueGalleryBtn = document.querySelector('.queue_list')
 const gallery = document.querySelector('.gallery__list');
 const myLibraryPage = document.querySelector('#my-library-page');
+import { pagination } from './pagination';
 
 const userLists = {
     init: function () {
@@ -40,8 +41,9 @@ const userLists = {
 
     fetchMovies: function (storageKey) {
         const moviesIds = JSON.parse(localStorage.getItem(storageKey));
-        
+           
         if (!moviesIds) {
+            pagination.reset(0);
             return;
           }
           
