@@ -63,7 +63,9 @@ const userLists = {
       genresNames.push(genre.name);
     });
 
-    const renderedGenres = genresNames.join(', ');
+    const shortGenresNames = genresNames.slice(0, 2);
+
+    const renderedGenres = shortGenresNames.join(', ');
 
     const markup = `<li class="card gallery__item">
                             <a href="#" class="card__link" data-id="${id}">
@@ -72,7 +74,7 @@ const userLists = {
                                 </div>
                                 <div class="card__wrapper">
                                 <h3 class="card__title">${title}</h3>
-                                <p class="card__info"><span class="card__info-genre">${renderedGenres}</span> | <span class="card__info-year">${releaseYear}</span><span class="card__info-vote">${vote_average}</span></p>
+                                <p class="card__info"><span class="card__info-genre">${renderedGenres}...</span> | <span class="card__info-year">${releaseYear}</span><span class="card__info-vote">${vote_average}</span></p>
                                 </div>
                             </a>
                         </li>`;
