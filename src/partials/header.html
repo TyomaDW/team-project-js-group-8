@@ -1,66 +1,68 @@
-<header class="header header--home">
-  <div class="container">
-    <div class="flex-wrapper">
-      <div class="logo">
-        <a href="./index.html" class="logo__link">
-          <svg class="logo__icon" width="24" height="24">
-            <use href="./img/header/symbol-defs.svg#icon-film"></use>
-          </svg>
-          <span class="app-name">Filmoteka</span>
-        </a>
+<header class="header">
+  <div class="header--home">
+    <div class="container">
+      <div class="flex-wrapper">
+        <div class="logo">
+          <a href="./index.html" class="logo__link">
+            <svg class="logo__icon" width="24" height="24">
+              <use href="./img/header/symbol-defs.svg#icon-film"></use>
+            </svg>
+            <span class="app-name">Filmoteka</span>
+          </a>
+        </div>
+        <nav class="nav" id="library-trigger">
+          <ul class="nav__list">
+            <li class="nav__item">
+              <a href="./index.html" class="nav__link nav__link--current">HOME</a>
+            </li>
+            <li class="nav__item">
+              <a href="./my-library.html" id="onlyForRegistered" class="nav__link">MY LIBRARY</a>
+            </li>
+          </ul>
+        </nav>
       </div>
-      <nav class="nav" id="library-trigger">
-        <ul class="nav__list">
-          <li class="nav__item">
-            <a href="./index.html" class="nav__link nav__link--current">HOME</a>
-          </li>
-          <li class="nav__item">
-            <a href="./my-library.html" id="onlyForRegistered" class="nav__link">MY LIBRARY</a>
-          </li>
-        </ul>
-      </nav>
+      <h1 class="visually-hidden">FIND YOUR MOVIE</h1>
+      <form class="search-form" id="search-form">
+        <input
+          class="search-form__input"
+          type="text"
+          name="search"
+          autocomplete="off"
+          placeholder="Поиск фильмов"
+          minlength="2"
+          required
+        />
+        <svg class="search-form__icon" width="12" height="12">
+          <use href="./img/header/symbol-defs.svg#icon-search"></use>
+        </svg>
+      </form>
+      <section class="auth">
+        <div class="auth__wrapper">
+          <ul class="auth__nav-list">
+            <li class="auth__nav-item">
+              <a
+                href="#"
+                id="login-trigger"
+                class="auth__nav-link logged-out"
+                data-target="modal-login"
+                >Sign In</a
+              >
+            </li>
+            <li class="auth__nav-item">
+              <a
+                href="#"
+                id="sign-up-trigger"
+                class="auth__nav-link logged-out"
+                data-target="modal-create"
+                >Sign Up</a
+              >
+            </li>
+            <li class="auth__nav-item">
+              <a href="#" id="logout-trigger" class="auth__nav-link">Log Out</a>
+            </li>
+          </ul>
+        </div>
+      </section>
     </div>
-    <h1 class="visually-hidden">FIND YOUR MOVIE</h1>
-    <form class="search-form" id="search-form">
-      <input
-        class="search-form__input"
-        type="text"
-        name="search"
-        autocomplete="off"
-        placeholder="Поиск фильмов"
-        minlength="2"
-        required
-      />
-      <svg class="search-form__icon" width="12" height="12">
-        <use href="./img/header/symbol-defs.svg#icon-search"></use>
-      </svg>
-    </form>
-    <section class="auth">
-      <div class="auth__wrapper">
-        <ul class="auth__nav-list">
-          <li class="auth__nav-item">
-            <a
-              href="#"
-              id="login-trigger"
-              class="auth__nav-link logged-out"
-              data-target="modal-login"
-              >Sign In</a
-            >
-          </li>
-          <li class="auth__nav-item">
-            <a
-              href="#"
-              id="sign-up-trigger"
-              class="auth__nav-link logged-out"
-              data-target="modal-create"
-              >Sign Up</a
-            >
-          </li>
-          <li class="auth__nav-item">
-            <a href="#" id="logout-trigger" class="auth__nav-link">Log Out</a>
-          </li>
-        </ul>
-      </div>
-    </section>
   </div>
 </header>
