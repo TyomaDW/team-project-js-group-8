@@ -1,4 +1,5 @@
 import { request } from './moviesApi';
+import { pagination } from './pagination';
 
 const watchedGalleryBtn = document.querySelector('.watched_list');
 const queueGalleryBtn = document.querySelector('.queue_list');
@@ -14,6 +15,7 @@ const userLists = {
     this.loadInitialMovies();
     this.initWatchedMovies();
     this.initQueueMovies();
+
   },
 
   loadInitialMovies: function () {
@@ -39,8 +41,10 @@ const userLists = {
 
   fetchMovies: function (storageKey) {
     const moviesIds = JSON.parse(localStorage.getItem(storageKey));
+     console.log(moviesIds);
 
     if (!moviesIds) {
+      pagination.reset(0);
       return;
     }
 
