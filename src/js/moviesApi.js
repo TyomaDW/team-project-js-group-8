@@ -1,3 +1,4 @@
+import { refs } from './templates/refs';
 const axios = require('axios').default;
 axios.defaults.baseURL = `https://api.themoviedb.org/`;
 const KEY = `aa799e6d0297de166f5b00a47e312b46`;
@@ -12,7 +13,8 @@ export const request = {
     const movies = response.data.results;
     const quantity = response.data.total_results;
     if (page == 1) {
-      pagination.reset(response.data.total_results);
+      pagination.reset(quantity);
+      pagination.setTotalItems(quantity);
     }
     return movies;
   },
@@ -37,6 +39,17 @@ export const request = {
     if (page == 1) {
       pagination.reset(response.data.total_results);
     }
+    if (!response.data.total_results) {
+      pagination.reset(0);
+      pagination.setTotalItems(0);
+      refs.gallery.innerHTML = '';
+      try {
+        document.getElementById('tui-pagination-container').style.display = 'none';
+      } catch(err) {}
+    }
+     else {
+      document.getElementById('tui-pagination-container').style.display = 'block';
+     }
     return movies;
   },
 
