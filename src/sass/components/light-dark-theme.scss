@@ -42,9 +42,15 @@ body.dark-theme {
     .highlight_all {
         background-color: rgb(10, 6, 6);
     }
+    .tui-pagination .tui-page-btn {
+        color: rgb(255, 255, 255);
+    }
+    .tui-pagination .tui-page-btn:hover,
+    .tui-pagination .tui-page-btn:focus {
+        color: var(--active-btn-color);
+    }
 }
 
-  
 .toolbar {
     position: absolute;
     top: 15px;
