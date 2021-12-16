@@ -129,6 +129,10 @@ const modalHandler = {
 
    initRemoveWatchedItem: function () {
       removeFromWatchedBtn.onclick = () => {
+         const currentMovie = document.querySelector(`a[data-id="${this.currentMovieId}"]`);
+         const closestToCurrentMovie = currentMovie.closest('.gallery__item');
+         closestToCurrentMovie.remove();
+
          this.removeLocalStorageItem("watchedMovieId");
          this.hideWatchedBtn();
          Notify.info('The movie successfully removed from Watched');
@@ -137,6 +141,10 @@ const modalHandler = {
 
    initRemoveQueueItem: function () {
       removeFromQueueBtn.onclick = () => {
+         const currentMovie = document.querySelector(`a[data-id="${this.currentMovieId}"]`);
+         const closestToCurrentMovie = currentMovie.closest('.gallery__item');
+         closestToCurrentMovie.remove();
+
          this.removeLocalStorageItem("queueMovieId");
          this.hideQueueBtn();
          Notify.info('The movie successfully removed from Queue');
