@@ -5,8 +5,45 @@ body.light-theme {
   
 body.dark-theme {
     background-color: rgb(10, 6, 6);;
-    color: #faf9dd;
+    .card__title {
+        color: rgb(255, 255, 255);
+    }
+
+    .footer__modal {
+        background-image: linear-gradient(
+            to top,
+            #030201,
+            #130902,
+            #140901,
+        );
+        @media screen and (min-width: 1024px) {
+          background-color: rgb(10, 6, 6);
+          background-image: url(../img/footer/team-illustration-bg-dark.jpg);
+        }
+    }
+
+    .footer__team-title {
+        color: white;
+    }
+
+    .modal_wrapper {
+        background-color: rgb(10, 6, 6);
+        color: rgb(255, 255, 255);
+    }
+
+    .close-btn__icon {
+        fill: rgb(255, 255, 255);
+    }
+
+    .contents_value {
+        color:  rgb(255, 255, 255);
+    }
+    
+    .highlight_all {
+        background-color: rgb(10, 6, 6);
+    }
 }
+
   
 .toolbar {
     position: absolute;
