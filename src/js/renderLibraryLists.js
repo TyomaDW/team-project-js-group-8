@@ -41,11 +41,17 @@ const userLists = {
 
   fetchMovies: function (storageKey) {
     const moviesIds = JSON.parse(localStorage.getItem(storageKey));
-     console.log(moviesIds);
-
+    console.log(moviesIds);
+    pagination.setTotalItems(moviesIds.length);
+    pagination.reset(moviesIds.length);
     if (!moviesIds) {
       pagination.reset(0);
       return;
+    } else if (moviesIds.length < 21) {
+      pagination.reset(0);
+      try {
+        document.getElementById('tui-pagination-container').style.display = 'none';
+      } catch(err) {}
     }
 
     moviesIds.forEach(movieId => {

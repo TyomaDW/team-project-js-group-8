@@ -31,3 +31,7 @@
     flex-basis: calc((100% - 3 * 30px) / 3);
   }
 }
+.tui-pagination .tui-is-selected, .tui-pagination strong {
+  background-color: var(--pseudo-el-color) !important;
+  border-color: var(--pseudo-el-color) !important;
+}
