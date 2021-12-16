@@ -132,7 +132,7 @@ const modalHandler = {
          const currentMovie = document.querySelector(`a[data-id="${this.currentMovieId}"]`);
          const closestToCurrentMovie = currentMovie.closest('.gallery__item');
          closestToCurrentMovie.remove();
-         
+
          this.removeLocalStorageItem("watchedMovieId");
          this.hideWatchedBtn();
          Notify.info('The movie successfully removed from Watched');
