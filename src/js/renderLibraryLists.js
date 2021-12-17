@@ -40,7 +40,7 @@ const userLists = {
   },
 
   fetchMovies: function (storageKey) {
-    const moviesIds = JSON.parse(localStorage.getItem(storageKey));
+    const moviesIds = JSON.parse(localStorage.getItem(storageKey)) || [];
     console.log(moviesIds);
     pagination.setTotalItems(moviesIds.length);
     pagination.reset(moviesIds.length);
